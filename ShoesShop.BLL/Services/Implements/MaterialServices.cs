@@ -1,12 +1,15 @@
 ﻿using Mapster;
 using Microsoft.EntityFrameworkCore;
+using ShoesShop.BLL.Common.ViewModels;
+using ShoesShop.BLL.Persistence;
 using ShoesShop.BLL.Services.Interfaces;
 using ShoesShop.BLL.ViewModels.Material;
-using ShoesShop.DAL.ApplicationDbContext;
+using ShoesShop.DAL.Entities;
+using ShoesShop.DAL.Helpers;
 
 namespace ShoesShop.BLL.Services.Implements
 {
-    public class MaterialServices : IMaterialServices
+    public class MaterialServices : IMaterialService
     {
         private WebDbContext _dbContext;
 
@@ -15,70 +18,79 @@ namespace ShoesShop.BLL.Services.Implements
             _dbContext = dbContext;
         }
 
-        public async Task<bool> AddMaterial(AddMaterialViewModel model)
+        public async Task<bool> AddNew(AddNewMaterialModel model)
         {
-            try
-            {
-                var data = await _dbContext.Materials.FirstOrDefaultAsync(x => x.Status > 0 && x.ID == model.ID);
-                if (data != null)
-                {
-                    return false;
-                }
-                await _dbContext.Materials.AddAsync(data);
-                await _dbContext.SaveChangesAsync(new CancellationToken());
-                return true;
-            }
-            catch (Exception)
+            var data = await _dbContext.Materials
+            .FirstOrDefaultAsync(s => !s.IsDeleted && s.Id == model.Id);
+
+            if (data != null)
             {
                 return false;
             }
+
+            var newData = model.Adapt<Material>();
+            newData.Code = model.Name.VietnameseToNormalString();
+
+            await _dbContext.Materials.AddAsync(newData);
+
+            await _dbContext.SaveChangesAsync(new CancellationToken());
+
+            return true;
         }
 
-        public async Task<bool> DeleteMaterial(Guid id)
+        public async Task<bool> Delete(DeleteModel model)
         {
-            try
-            {
-                var data = await _dbContext.Materials.FirstOrDefaultAsync(x => x.Status > 0 && x.ID == id);
-                if (data != null)
-                {
-                    return false;
-                }
-                data.Status = 0;
-                _dbContext.Materials.Update(data);
-                await _dbContext.SaveChangesAsync(new CancellationToken());
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-        }
+            var data = await _dbContext.Materials
+             .FirstOrDefaultAsync(s => !s.IsDeleted && s.Id == model.Id);
 
-        public async Task<List<MaterialViewModel>> GetAllMaterial()
-        {
-            var data = await _dbContext.Materials.Where(s => s.Status > 0).OrderByDescending(a => a.CreatedDate).ToListAsync();
-            return data.Adapt<List<MaterialViewModel>>();
-        }
-
-        public async Task<MaterialViewModel> GetMaterialById(Guid id)
-        {
-            var data = await _dbContext.Materials.FirstOrDefaultAsync(x => x.ID == id);
-            return data == null ? new MaterialViewModel() : data.Adapt<MaterialViewModel>();
-        }
-
-        public async Task<bool> UpdateMaterial(UpdateMaterialViewModel model)
-        {
-            var data = _dbContext.Materials.Find(model.ID);
             if (data == null)
             {
                 return false;
             }
-            data.Name = model.Name;
-            data.UpdatedBy = model.UpdatedBy;
-            data.LastModifiedDate = DateTime.Now;
-            data.Status = model.Status;
+
+            data.IsDeleted = true;
+
             _dbContext.Materials.Update(data);
             await _dbContext.SaveChangesAsync(new CancellationToken());
+
+            return true;
+        }
+
+        public async Task<MaterialDetailModel> GetDetail(string id)
+        {
+            var data = await _dbContext.Materials
+           .FirstOrDefaultAsync(s => !s.IsDeleted && s.Id == Guid.Parse(id));
+
+            return data == null ? new MaterialDetailModel() : data.Adapt<MaterialDetailModel>();
+        }
+
+        public async Task<List<MaterialDetailModel>> GetListMaterial()
+        {
+            var data = await _dbContext.Materials
+           .Where(s => !s.IsDeleted)
+           .OrderByDescending(a => a.CreatedAt)
+           .ToListAsync();
+
+            return data.Adapt<List<MaterialDetailModel>>();
+        }
+
+        public async Task<bool> Update(UpdateMaterialModel model)
+        {
+            var data = await _dbContext.Materials
+            .FirstOrDefaultAsync(s => !s.IsDeleted && s.Id == model.Id);
+
+            if (data == null)
+            {
+                return false;
+            }
+
+            data.Name = model.Name;
+            data.Code = model.Name.VietnameseToNormalString();
+
+            _dbContext.Materials.Update(data);
+
+            await _dbContext.SaveChangesAsync(new CancellationToken());
+
             return true;
         }
     }

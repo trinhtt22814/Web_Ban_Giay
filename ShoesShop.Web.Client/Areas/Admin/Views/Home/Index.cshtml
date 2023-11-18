@@ -1,8 +1,7 @@
-﻿
-@using ShoesShop.DAL
+﻿@using ShoesShop.DAL.Constants
 @{
-    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
-    var title =  "Báo cáo";
+    Layout = "_LayoutAdmin";
+    var title = AppVersion.IsEnglishVersion ? "Report" : "Báo cáo";
 }
 
 <div class="page-body">
@@ -54,4 +53,3 @@
 </div>
 
 <script src="~/js/application/admin/chart-report/chart-report-summary.js"></script>
-

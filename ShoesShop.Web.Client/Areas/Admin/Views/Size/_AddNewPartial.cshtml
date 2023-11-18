@@ -1,0 +1,34 @@
+﻿@using ShoesShop.DAL.Constants
+@{
+    Layout = null;
+
+    var title = AppVersion.IsEnglishVersion ? "Add New Size" : "Thêm kích cỡ";
+    var required = AppVersion.IsEnglishVersion ? "This field is required." : "Trường này là bắt buộc.";
+    var save = AppVersion.IsEnglishVersion ? "Save" : "Thêm";
+    var sizeName = AppVersion.IsEnglishVersion ? "Size Name" : "Tên kích cỡ";
+    var existed = AppVersion.IsEnglishVersion ? "Size Name has existed" : "Tên kích cỡ đã tồn tại.";
+}
+<input type="hidden" id="existedText" value="@existed"/>
+
+<div class="modal-header">
+    <h4 class="modal-title">@title</h4>
+    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span>
+    </button>
+</div>
+
+<div class="modal-body">
+    <form id="frmSubmit" class="contact-form">
+        <div class="form-group required">
+            <input class="input form-control" type="text" name="Name" placeholder="@sizeName">
+            <span class="text-danger" style="display: none;">@required</span>
+            <span class="text-danger" id="Existed" style="display: none;"></span>
+        </div>
+    </form>
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-primary text-center" id="btn-submit-add-new">@save</button>
+</div>
+
+<script src="~/js/application/admin/sz/add-new.js"></script>

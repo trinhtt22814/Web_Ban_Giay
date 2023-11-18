@@ -1,32 +1,32 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using ShoesShop.Web.Client.Models;
-using System.Diagnostics;
+﻿using BLL.Services.Interfaces;
+using Microsoft.AspNetCore.Mvc;
+using ShoesShop.DAL.Constants;
 
-namespace ShoesShop.Web.Client.Controllers
+namespace ShoesShop.Web.Client.Controllers;
+
+public class HomeController : BaseController
 {
-    public class HomeController : Controller
+    private readonly IConfiguration _configuration;
+    private readonly IProductService _productService;
+
+    public HomeController(IConfiguration configuration, IProductService productService)
     {
-        private readonly ILogger<HomeController> _logger;
+        _configuration = configuration;
+        _productService = productService;
+        AppVersion.IsEnglishVersion = _configuration.GetValue<bool>("IsEnglishVersion");
+    }
 
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
+    public async Task<IActionResult> Index()
+    {
+        var data = await _productService.GetListProduct();
+        data = data.OrderByDescending(s => s.CreatedAt).ToList();
+        return View(data);
+    }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+    public async Task<IActionResult> PaymentCallback(string success, string paymentMethod)
+    {
+        var data = await _productService.GetListProduct();
+        data = data.OrderByDescending(s => s.CreatedAt).ToList();
+        return View(data);
     }
 }

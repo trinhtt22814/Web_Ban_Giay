@@ -1,14 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using ShoesShop.DAL.Constants;
 
-namespace ShoesShop.Web.Client.Areas.Admin.Controllers
+namespace ShoesShop.Web.Client.Areas.Admin.Controllers;
+
+[Authorize(Roles = SecurityRoles.Manager)]
+public class HomeController : BaseAdminController
 {
-    [Area("Admin")]
-    
-    public class HomeController : Controller
+    // GET
+    public IActionResult Index()
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
+        return View();
     }
 }

@@ -1,23 +1,23 @@
-﻿@* @using Domain.Constants
-@using Application.Interfaces
-@inject IIdentityService IdentityService *@
+﻿@using ShoesShop.DAL.Constants
+@using ShoesShop.BLL.Services.Interfaces
+@inject IIdentityService IdentityService
 @{
     Layout = null;
-    var userManagement = "Quản lý người dùng";
-    var productManagement = "Quản lý sản phẩm";
-    var categoryManagement = "Quản lý thể loại";
-    var brandManagement = "Quản lý thương hiệu";
-    var backToHome = "Trở về trang chính";
-    var promotionManagement = "Quản lý mã giảm giá";
-    var orderManagement = "Quản lý đơn hàng";
-    var ratingManagement = "Quản lý Rating";
+    var userManagement = AppVersion.IsEnglishVersion ? "User" : "Quản lý người dùng";
+    var productManagement = AppVersion.IsEnglishVersion ? "Product" : "Quản lý sản phẩm";
+    var categoryManagement = AppVersion.IsEnglishVersion ? "Category" : "Quản lý thể loại";
+    var brandManagement = AppVersion.IsEnglishVersion ? "Brand" : "Quản lý thương hiệu";
+    var backToHome = AppVersion.IsEnglishVersion ? "back To Home" : "Trở về trang chính";
+    var promotionManagement = AppVersion.IsEnglishVersion ? "Promotion" : "Quản lý mã giảm giá";
+    var orderManagement = AppVersion.IsEnglishVersion ? "Order" : "Quản lý đơn hàng";
+    var ratingManagement = AppVersion.IsEnglishVersion ? "Rating" : "Quản lý Rating";
 }
 
 <div class="page-sidebar iconcolor-sidebar" id="div_left_side_bar">
     <div class="main-header-left d-none d-lg-block">
         <div class="logo-wrapper">
             <a href="/Admin/Home">
-                <img @* src="@AppConst.LogoForDark" *@ alt="">
+                <img src="@AppConst.LogoForDark" alt="">
             </a>
         </div>
     </div>
@@ -27,14 +27,14 @@
             <a class="sidebar-header" href="/Admin/Home/Index">
                 <i data-feather="home"></i><span>Dashboard</span>
             </a>
-            @* @if (IdentityService.IsInRoleAsync(SecurityRoles.Admin))
+            @if (IdentityService.IsInRoleAsync(SecurityRoles.Admin))
             {
                 <li>
                     <a class="sidebar-header" href="/Admin/User/Index">
                         <i data-feather="user"></i><span> @userManagement</span>
                     </a>
                 </li>
-            } *@
+            }
             <li>
                 <a class="sidebar-header" href="/Admin/Product/Index">
                     <i data-feather="database"></i><span> @productManagement</span>

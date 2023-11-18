@@ -1,12 +1,15 @@
 ﻿using Mapster;
 using Microsoft.EntityFrameworkCore;
+using ShoesShop.BLL.Common.ViewModels;
+using ShoesShop.BLL.Persistence;
 using ShoesShop.BLL.Services.Interfaces;
 using ShoesShop.BLL.ViewModels.Size;
-using ShoesShop.DAL.ApplicationDbContext;
+using ShoesShop.DAL.Entities;
+using ShoesShop.DAL.Helpers;
 
 namespace ShoesShop.BLL.Services.Implements
 {
-    public class SizeServices : ISizeServices
+    public class SizeServices : ISizeService
     {
         private WebDbContext _dbContext;
 
@@ -15,70 +18,79 @@ namespace ShoesShop.BLL.Services.Implements
             _dbContext = dbContext;
         }
 
-        public async Task<bool> AddSize(AddSizeViewModel model)
+        public async Task<bool> AddNew(AddNewSizeModel model)
         {
-            try
-            {
-                var data = await _dbContext.Sizes.FirstOrDefaultAsync(x => x.Status > 0 && x.ID == model.ID);
-                if (data != null)
-                {
-                    return false;
-                }
-                await _dbContext.Sizes.AddAsync(data);
-                await _dbContext.SaveChangesAsync(new CancellationToken());
-                return true;
-            }
-            catch (Exception)
+            var data = await _dbContext.Sizes
+            .FirstOrDefaultAsync(s => !s.IsDeleted && s.Id == model.Id);
+
+            if (data != null)
             {
                 return false;
             }
+
+            var newData = model.Adapt<Size>();
+            newData.Code = model.Name.VietnameseToNormalString();
+
+            await _dbContext.Sizes.AddAsync(newData);
+
+            await _dbContext.SaveChangesAsync(new CancellationToken());
+
+            return true;
         }
 
-        public async Task<bool> DeleteSize(Guid id)
+        public async Task<bool> Delete(DeleteModel model)
         {
-            try
-            {
-                var data = await _dbContext.Sizes.FirstOrDefaultAsync(x => x.Status > 0 && x.ID == id);
-                if (data != null)
-                {
-                    return false;
-                }
-                data.Status = 0;
-                _dbContext.Sizes.Update(data);
-                await _dbContext.SaveChangesAsync(new CancellationToken());
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-        }
+            var data = await _dbContext.Sizes
+             .FirstOrDefaultAsync(s => !s.IsDeleted && s.Id == model.Id);
 
-        public async Task<List<SizeViewModel>> GetAllSize()
-        {
-            var data = await _dbContext.Sizes.Where(s => s.Status > 0).OrderByDescending(a => a.CreatedDate).ToListAsync();
-            return data.Adapt<List<SizeViewModel>>();
-        }
-
-        public async Task<SizeViewModel> GetSizeById(Guid id)
-        {
-            var data = await _dbContext.Sizes.FirstOrDefaultAsync(x => x.ID == id);
-            return data == null ? new SizeViewModel() : data.Adapt<SizeViewModel>();
-        }
-
-        public async Task<bool> UpdateSize(UpdateSizeViewModel model)
-        {
-            var data = _dbContext.Sizes.FirstOrDefault(x => x.ID == model.ID);
             if (data == null)
             {
                 return false;
             }
-            data.Name = model.Name;
-            data.UpdatedBy = model.UpdatedBy;
-            data.LastModifiedDate = DateTime.Now;
-            data.Status = model.Status;
+
+            data.IsDeleted = true;
+
             _dbContext.Sizes.Update(data);
             await _dbContext.SaveChangesAsync(new CancellationToken());
+
+            return true;
+        }
+
+        public async Task<SizeDetailModel> GetDetail(string id)
+        {
+            var data = await _dbContext.Sizes
+            .FirstOrDefaultAsync(s => !s.IsDeleted && s.Id == Guid.Parse(id));
+
+            return data == null ? new SizeDetailModel() : data.Adapt<SizeDetailModel>();
+        }
+
+        public async Task<List<SizeDetailModel>> GetListSize()
+        {
+            var data = await _dbContext.Sizes
+           .Where(s => !s.IsDeleted)
+           .OrderByDescending(a => a.CreatedAt)
+           .ToListAsync();
+
+            return data.Adapt<List<SizeDetailModel>>();
+        }
+
+        public async Task<bool> Update(UpdateSizeModel model)
+        {
+            var data = await _dbContext.Sizes
+            .FirstOrDefaultAsync(s => !s.IsDeleted && s.Id == model.Id);
+
+            if (data == null)
+            {
+                return false;
+            }
+
+            data.Name = model.Name;
+            data.Code = model.Name.VietnameseToNormalString();
+
+            _dbContext.Sizes.Update(data);
+
+            await _dbContext.SaveChangesAsync(new CancellationToken());
+
             return true;
         }
     }

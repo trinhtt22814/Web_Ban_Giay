@@ -1,12 +1,16 @@
 ﻿using Mapster;
 using Microsoft.EntityFrameworkCore;
+using ShoesShop.BLL.Common.ViewModels;
+using ShoesShop.BLL.Persistence;
 using ShoesShop.BLL.Services.Interfaces;
 using ShoesShop.BLL.ViewModels.Color;
-using ShoesShop.DAL.ApplicationDbContext;
+
+using ShoesShop.DAL.Entities;
+using ShoesShop.DAL.Helpers;
 
 namespace ShoesShop.BLL.Services.Implements
 {
-    public class ColorServices : IColorServices
+    public class ColorServices : IColorService
     {
         private WebDbContext _dbContext;
 
@@ -15,70 +19,79 @@ namespace ShoesShop.BLL.Services.Implements
             _dbContext = dbContext;
         }
 
-        public async Task<bool> AddColor(AddColorViewModel model)
+        public async Task<List<ColorDetailModel>> GetListColor()
         {
-            try
-            {
-                var data = await _dbContext.Colors.FirstOrDefaultAsync(x => x.Status > 0 && x.ID == model.ID);
-                if (data != null)
-                {
-                    return false;
-                }
-                await _dbContext.Colors.AddAsync(data);
-                await _dbContext.SaveChangesAsync(new CancellationToken());
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
+            var data = await _dbContext.Colors
+           .Where(s => !s.IsDeleted)
+           .OrderByDescending(a => a.CreatedAt)
+           .ToListAsync();
+
+            return data.Adapt<List<ColorDetailModel>>();
         }
 
-        public async Task<bool> DeleteColor(Guid id)
+        public async Task<ColorDetailModel> GetDetail(string id)
         {
-            try
-            {
-                var data = await _dbContext.Colors.FirstOrDefaultAsync(x => x.Status > 0 && x.ID == id);
-                if (data != null)
-                {
-                    return false;
-                }
-                data.Status = 0;
-                _dbContext.Colors.Update(data);
-                await _dbContext.SaveChangesAsync(new CancellationToken());
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
+            var data = await _dbContext.Colors
+            .FirstOrDefaultAsync(s => !s.IsDeleted && s.Id == Guid.Parse(id));
+
+            return data == null ? new ColorDetailModel() : data.Adapt<ColorDetailModel>();
         }
 
-        public async Task<ColorViewModel> GetColorById(Guid id)
+        public async Task<bool> Delete(DeleteModel model)
         {
-            var data = await _dbContext.Colors.FirstOrDefaultAsync(x => x.ID == id);
-            return data == null ? new ColorViewModel() : data.Adapt<ColorViewModel>();
-        }
+            var data = await _dbContext.Colors
+             .FirstOrDefaultAsync(s => !s.IsDeleted && s.Id == model.Id);
 
-        public async Task<List<ColorViewModel>> GetAllColor()
-        {
-            var data = await _dbContext.Colors.Where(s => s.Status > 0).OrderByDescending(a => a.CreatedDate).ToListAsync();
-            return data.Adapt<List<ColorViewModel>>();
-        }
-
-        public async Task<bool> UpdateColor(UpdateColorViewModel model)
-        {
-            var data = _dbContext.Colors.Find(model.ID);
             if (data == null)
             {
                 return false;
             }
-            data.Name = model.Name;
-            data.UpdatedBy = model.UpdatedBy;
-            data.LastModifiedDate = DateTime.Now;
-            data.Status = model.Status;
+
+            data.IsDeleted = true;
+
             _dbContext.Colors.Update(data);
             await _dbContext.SaveChangesAsync(new CancellationToken());
+
+            return true;
+        }
+
+        public async Task<bool> AddNew(AddNewColorModel model)
+        {
+            var data = await _dbContext.Colors
+            .FirstOrDefaultAsync(s => !s.IsDeleted && s.Id == model.Id);
+
+            if (data != null)
+            {
+                return false;
+            }
+
+            var newData = model.Adapt<Color>();
+            newData.Code = model.Name.VietnameseToNormalString();
+
+            await _dbContext.Colors.AddAsync(newData);
+
+            await _dbContext.SaveChangesAsync(new CancellationToken());
+
+            return true;
+        }
+
+        public async Task<bool> Update(UpdateColorModel model)
+        {
+            var data = await _dbContext.Colors
+            .FirstOrDefaultAsync(s => !s.IsDeleted && s.Id == model.Id);
+
+            if (data == null)
+            {
+                return false;
+            }
+
+            data.Name = model.Name;
+            data.Code = model.Name.VietnameseToNormalString();
+
+            _dbContext.Colors.Update(data);
+
+            await _dbContext.SaveChangesAsync(new CancellationToken());
+
             return true;
         }
     }

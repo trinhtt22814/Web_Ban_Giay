@@ -1,13 +1,14 @@
-﻿namespace ShoesShop.DAL.Entities
+﻿using ShoesShop.DAL.Entities.Base;
+using System.ComponentModel.DataAnnotations;
+
+namespace ShoesShop.DAL.Entities
 {
-    public class OrderDetail
+    public class OrderDetail : Audit
     {
-        public Guid ID { get; set; }
-        public Guid IDProductDetail { get; set; }
-        public Guid IDOrder { get; set; }
-        public int Price { get; set; }
-        public int Quantity { get; set; }
-        public virtual Order Order { get; set; }
-        public virtual ProductDetail ProductDetail { get; set; }
+        [Required] public int Quantity { get; set; }
+        [Required] public decimal Price { set; get; }
+        public Guid OrderId { get; set; }
+        public Guid ProductId { get; set; }
+        public Guid PromotionId { get; set; }
     }
 }

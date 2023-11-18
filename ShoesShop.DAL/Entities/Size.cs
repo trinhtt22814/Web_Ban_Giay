@@ -1,11 +1,11 @@
 ﻿using ShoesShop.DAL.Entities.Base;
+using System.ComponentModel.DataAnnotations;
 
 namespace ShoesShop.DAL.Entities
 {
-    public class Size : BaseID
-
+    public class Size : Audit
     {
-        public string Name { get; set; }
-        public virtual IEnumerable<ProductDetail> ProductDetail { get; set; }
+        [Required][MaxLength(500)] public string Name { get; set; }
+        [Required][MaxLength(500)] public string Code { get; set; }
     }
 }

@@ -1,10 +1,11 @@
-﻿@using ShoesShop.BLL
-@using ShoesShop.DAL
-@* @inject IIdentityService _identityService *@
+﻿
+@using ShoesShop.BLL.Services.Interfaces
+@using ShoesShop.DAL.Constants
+@inject IIdentityService _identityService
 
 @{
     Layout = null;
-    // var user = _identityService.GetCurrentUserLogin();
+    var user = _identityService.GetCurrentUserLogin();
 }
 
 <div class="page-main-header">
@@ -12,7 +13,7 @@
 <div class="main-header-left d-lg-none">
     <div class="logo-wrapper">
         <a href="/Admin/Home">
-            @* <img src="@AppConst.LogoForLight" alt=""> *@
+            <img src="@AppConst.LogoForLight" alt="">
         </a>
     </div>
 </div>
@@ -103,9 +104,9 @@
             <div class="dropdown">
                 <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">
                     <span class="media user-header">
-                        <img class="mr-2 rounded-circle img-35" style="width: 25px; height: 25px" src="@* @user.Picture *@" alt="">
+                        <img class="mr-2 rounded-circle img-35" style="width: 25px; height: 25px" src="@user.Picture" alt="">
                         <span class="media-body">
-                            <span class="f-12 f-w-600">@* @user.FullName *@</span><span class="d-block">Admin</span>
+                            <span class="f-12 f-w-600">@user.FullName</span><span class="d-block">Admin</span>
                         </span>
                     </span>
                 </button>

@@ -1,11 +1,12 @@
 ﻿using ShoesShop.DAL.Entities.Base;
+using System.ComponentModel.DataAnnotations;
 
 namespace ShoesShop.DAL.Entities
 {
-    public class Image : BaseID
+    public class Image : Audit
     {
-        public Guid IDProductDetail { get; set; }
-        public string Name { get; set; }
-        public virtual ProductDetail ProductDetail { get; set; }
+        public Guid ProductId { get; set; }
+        [MaxLength(500)] public string? OriginLinkImage { get; set; }
+        [MaxLength(500)] public string? LocalLinkImage { get; set; }
     }
 }
