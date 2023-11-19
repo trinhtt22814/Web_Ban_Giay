@@ -7,6 +7,9 @@
     var productManagement = AppVersion.IsEnglishVersion ? "Product" : "Quản lý sản phẩm";
     var categoryManagement = AppVersion.IsEnglishVersion ? "Category" : "Quản lý thể loại";
     var brandManagement = AppVersion.IsEnglishVersion ? "Brand" : "Quản lý thương hiệu";
+    var colorManagement = AppVersion.IsEnglishVersion ? "Color" : "Quản lý màu sắc";
+    var sizeManagement = AppVersion.IsEnglishVersion ? "Size" : "Quản lý kích cỡ";
+    var materialManagement = AppVersion.IsEnglishVersion ? "Material" : "Quản lý chất liệu";
     var backToHome = AppVersion.IsEnglishVersion ? "back To Home" : "Trở về trang chính";
     var promotionManagement = AppVersion.IsEnglishVersion ? "Promotion" : "Quản lý mã giảm giá";
     var orderManagement = AppVersion.IsEnglishVersion ? "Order" : "Quản lý đơn hàng";
@@ -41,6 +44,11 @@
                 </a>
             </li>
             <li>
+                <a class="sidebar-header" href="/Admin/Order/Index">
+                    <i data-feather="truck"></i><span> @orderManagement</span>
+                </a>
+            </li>
+            <li>
                 <a class="sidebar-header" href="/Admin/Category/Index">
                     <i data-feather="package"></i><span> @categoryManagement</span>
                 </a>
@@ -51,15 +59,26 @@
                 </a>
             </li>
             <li>
+                <a class="sidebar-header" href="/Admin/Color/Index">
+                    <i data-feather="sliders"></i><span> @colorManagement</span>
+                </a>
+            </li>
+            <li>
+                <a class="sidebar-header" href="/Admin/Size/Index">
+                    <i data-feather="maximize-2"></i><span> @sizeManagement</span>
+                </a>
+            </li>
+            <li>
+                <a class="sidebar-header" href="/Admin/Material/Index">
+                    <i data-feather="paperclip"></i><span> @materialManagement</span>
+                </a>
+            </li>
+            <li>
                 <a class="sidebar-header" href="/Admin/Promotion/Index">
                     <i data-feather="target"></i><span> @promotionManagement</span>
                 </a>
             </li>
-            <li>
-                <a class="sidebar-header" href="/Admin/Order/Index">
-                    <i data-feather="truck"></i><span> @orderManagement</span>
-                </a>
-            </li>
+       
             <li>
                 <a class="sidebar-header" href="/Admin/Rating/Index">
                     <i data-feather="star"></i><span> @ratingManagement</span>

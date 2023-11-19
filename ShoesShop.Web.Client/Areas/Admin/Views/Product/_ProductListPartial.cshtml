@@ -8,10 +8,13 @@
     var productName = AppVersion.IsEnglishVersion ? "Product name" : "Tên sản phẩm";
     var brand = AppVersion.IsEnglishVersion ? "Brand" : "Thương hiệu";
     var category = AppVersion.IsEnglishVersion ? "Category" : "Thể loại";
+    var color = AppVersion.IsEnglishVersion ? "Color" : "Màu sắc";
+    var size = AppVersion.IsEnglishVersion ? "Size" : "Kích cỡ";
+    var material = AppVersion.IsEnglishVersion ? "Material" : "Chất liệu";
     var price = AppVersion.IsEnglishVersion ? "Price" : "Giá sản phẩm";
     var discount = AppVersion.IsEnglishVersion ? "Discount price" : "Giá khuyến mãi";
-    var createdAt = AppVersion.IsEnglishVersion ? "Created at" : "Tạo ngày";
-    var updatedAt = AppVersion.IsEnglishVersion ? "Updated at" : "Sửa ngày";
+    var createdAt = AppVersion.IsEnglishVersion ? "Created at" : "Ngày tạo";
+    var updatedAt = AppVersion.IsEnglishVersion ? "Updated at" : "Ngày sửa";
     var action = AppVersion.IsEnglishVersion ? "Action" : "Thao tác";
     var text = AppVersion.IsEnglishVersion ? "Are you sure want to delete?" : "Bạn có chắc muốn xóa?";
     var title = AppVersion.IsEnglishVersion ? "Delete confirmation" : "Xác nhận xóa";
@@ -27,6 +30,9 @@
             <th>@productName</th>
             <th>@brand</th>
             <th>@category</th>
+            <th>@color</th>
+            <th>@size</th>
+            <th>@material</th>
             <th>@price</th>
             <th>@discount</th>
             <th>@createdAt</th>
@@ -47,6 +53,9 @@
                 </td>
                 <td>@item.Brand</td>
                 <td>@item.Category</td>
+                <td>@item.Color</td>
+                <td>@item.Size</td>
+                <td>@item.Material</td>
                 <td>@item.Currency.ToCurrencyMoney(item.Price)</td>
                 @if (item.Discount > 0)
                 {

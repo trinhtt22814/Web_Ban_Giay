@@ -32,18 +32,20 @@ public class ProductService : IProductService
                         && s.Type.Equals(StatusType.Product.ReadDescription())
                         && s.Code.Equals(ProductStatus.AvailableCode.ReadDescription()))
             .ToListAsync();
-        var brands = await _dbContext.Brands
-            .Where(s => !s.IsDeleted)
-            .ToListAsync();
-        var categories = await _dbContext.Categories
-            .Where(s => !s.IsDeleted)
-            .ToListAsync();
+        var brands = await _dbContext.Brands.Where(s => !s.IsDeleted).ToListAsync();
+        var categories = await _dbContext.Categories.Where(s => !s.IsDeleted).ToListAsync();
+        var colors = await _dbContext.Colors.Where(s => !s.IsDeleted).ToListAsync();
+        var sizes = await _dbContext.Sizes.Where(s => !s.IsDeleted).ToListAsync();
+        var materials = await _dbContext.Materials.Where(s => !s.IsDeleted).ToListAsync();
 
         var listJoin = from product in products
                        join category in categories on product.CategoryId equals category.Id
                        join brand in brands on product.BrandId equals brand.Id
+                       join color in colors on product.ColorId equals color.Id
+                       join size in sizes on product.SizeId equals size.Id
+                       join material in materials on product.MaterialId equals material.Id
                        join status in statuses on product.StatusId equals status.Id
-                       where !category.IsDeleted && !brand.IsDeleted && !status.IsDeleted && !product.IsDeleted
+                       where !category.IsDeleted && !brand.IsDeleted && !status.IsDeleted && !product.IsDeleted && !color.IsDeleted && !size.IsDeleted && !material.IsDeleted
                        select new
                        {
                            Id = product.Id,
@@ -62,6 +64,9 @@ public class ProductService : IProductService
                            Stock = product.Stock,
                            Brand = brand.Name,
                            Category = category.Name,
+                           Color = color.Name,
+                           Size = size.Name,
+                           Material = material.Name,                      
                            DefaultImage = product.DefaultImage
                        };
 
@@ -147,6 +152,21 @@ public class ProductService : IProductService
 
         if (category == null) return new ProductDetailModel();
 
+        var color = await _dbContext.Colors
+            .FirstOrDefaultAsync(s => !s.IsDeleted && s.Id == product.ColorId);
+
+        if (color == null) return new ProductDetailModel();
+
+        var size = await _dbContext.Sizes
+            .FirstOrDefaultAsync(s => !s.IsDeleted && s.Id == product.SizeId);
+
+        if (size == null) return new ProductDetailModel();
+
+        var material = await _dbContext.Materials
+            .FirstOrDefaultAsync(s => !s.IsDeleted && s.Id == product.MaterialId);
+
+        if (material == null) return new ProductDetailModel();
+
         var properties = await _dbContext.Properties
             .Where(s => !s.IsDeleted && s.ProductId == productId)
             .ToListAsync();
@@ -158,6 +178,9 @@ public class ProductService : IProductService
         var finalData = product.Adapt<ProductDetailModel>();
         finalData.Brand = brand.Name;
         finalData.Category = category.Name;
+        finalData.Color = color.Name;
+        finalData.Size = size.Name;
+        finalData.Material = material.Name;
         finalData.Images = images.Adapt<List<ImageDetailModel>>();
         finalData.Properties = properties.Adapt<List<PropertyDetailModel>>();
 
@@ -174,18 +197,20 @@ public class ProductService : IProductService
                         && s.Type.Equals(StatusType.Product.ReadDescription())
                         && s.Code.Equals(ProductStatus.AvailableCode.ReadDescription()))
             .ToListAsync();
-        var brands = await _dbContext.Brands
-            .Where(s => !s.IsDeleted)
-            .ToListAsync();
-        var categories = await _dbContext.Categories
-            .Where(s => !s.IsDeleted)
-            .ToListAsync();
+        var brands = await _dbContext.Brands.Where(s => !s.IsDeleted).ToListAsync();
+        var categories = await _dbContext.Categories.Where(s => !s.IsDeleted).ToListAsync();
+        var colors = await _dbContext.Colors.Where(s => !s.IsDeleted).ToListAsync();
+        var sizes = await _dbContext.Sizes.Where(s => !s.IsDeleted).ToListAsync();
+        var materials = await _dbContext.Materials.Where(s => !s.IsDeleted).ToListAsync();
 
         var listJoin = from product in products
                        join category in categories on product.CategoryId equals category.Id
                        join brand in brands on product.BrandId equals brand.Id
+                       join color in colors on product.ColorId equals color.Id
+                       join size in sizes on product.SizeId equals size.Id
+                       join material in materials on product.MaterialId equals material.Id
                        join status in statuses on product.StatusId equals status.Id
-                       where !category.IsDeleted && !brand.IsDeleted && !status.IsDeleted && !product.IsDeleted
+                       where !category.IsDeleted && !brand.IsDeleted && !status.IsDeleted && !product.IsDeleted && !color.IsDeleted && !size.IsDeleted && !material.IsDeleted
                        select new
                        {
                            Id = product.Id,
@@ -204,9 +229,15 @@ public class ProductService : IProductService
                            Stock = product.Stock,
                            Brand = brand.Name,
                            Category = category.Name,
+                           Color = color.Name,
+                           Size = size.Name,
+                           Material = material.Name,
                            DefaultImage = product.DefaultImage,
                            CategoryCode = category.Code,
-                           BrandCode = brand.Code
+                           BrandCode = brand.Code,
+                           ColorCode = color.Code,
+                           SizeCode = size.Code,
+                           MaterialCode = material.Code,
                        };
 
         var finalData = listJoin.Adapt<List<ProductDetailModel>>().ToList();
@@ -239,6 +270,12 @@ public class ProductService : IProductService
                     string.Equals(s.CategoryCode, typeValue, StringComparison.CurrentCultureIgnoreCase)).ToList(),
                 "brand" => finalData.Where(s =>
                     string.Equals(s.BrandCode, typeValue, StringComparison.CurrentCultureIgnoreCase)).ToList(),
+                //"color" => finalData.Where(s =>
+                //string.Equals(s.ColorCode, typeValue, StringComparison.CurrentCultureIgnoreCase)).ToList(),
+                //"size" => finalData.Where(s =>
+                //    string.Equals(s.SizeCode, typeValue, StringComparison.CurrentCultureIgnoreCase)).ToList(),
+                //"material" => finalData.Where(s =>
+                //string.Equals(s.MaterialCode, typeValue, StringComparison.CurrentCultureIgnoreCase)).ToList(),
                 _ => finalData
             };
         }
@@ -284,6 +321,9 @@ public class ProductService : IProductService
             productDetail.Currency = model.Currency;
             productDetail.BrandId = model.BrandId;
             productDetail.CategoryId = model.CategoryId;
+            productDetail.ColorId = model.ColorId;
+            productDetail.SizeId = model.SizeId;
+            productDetail.MaterialId = model.MaterialId;
 
             _dbContext.Products.Update(productDetail);
             await _dbContext.SaveChangesAsync(new CancellationToken());
@@ -331,6 +371,21 @@ public class ProductService : IProductService
 
         if (category == null) return new ProductDetailModel();
 
+        var color = await _dbContext.Colors
+            .FirstOrDefaultAsync(s => !s.IsDeleted && s.Id == product.ColorId);
+
+        if (color == null) return new ProductDetailModel();
+
+        var size = await _dbContext.Sizes
+            .FirstOrDefaultAsync(s => !s.IsDeleted && s.Id == product.SizeId);
+
+        if (size == null) return new ProductDetailModel();
+
+        var material = await _dbContext.Materials
+            .FirstOrDefaultAsync(s => !s.IsDeleted && s.Id == product.MaterialId);
+
+        if (material == null) return new ProductDetailModel();
+
         var properties = await _dbContext.Properties
             .Where(s => !s.IsDeleted && s.ProductId == product.Id)
             .ToListAsync();
@@ -342,6 +397,9 @@ public class ProductService : IProductService
         var finalData = product.Adapt<ProductDetailModel>();
         finalData.Brand = brand.Name;
         finalData.Category = category.Name;
+        finalData.Color = color.Name;
+        finalData.Size = size.Name;
+        finalData.Material = material.Name;
         finalData.Images = images.Adapt<List<ImageDetailModel>>();
         finalData.Properties = properties.Adapt<List<PropertyDetailModel>>();
 

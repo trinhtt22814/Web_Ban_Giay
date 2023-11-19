@@ -1,6 +1,7 @@
 ﻿using BLL.Services.Interfaces;
 
 using Microsoft.AspNetCore.Mvc;
+using ShoesShop.BLL.Services.Interfaces;
 using ShoesShop.BLL.ViewModels.Product;
 using ShoesShop.BLL.ViewModels.Search;
 using ShoesShop.DAL.Helpers;
@@ -12,14 +13,23 @@ public class ProductController : BaseController
     private readonly IProductService _productService;
     private readonly ICategoryService _categoryService;
     private readonly IBrandService _brandService;
+    private readonly IColorService _colorService;
+    private readonly ISizeService _sizeService;
+    private readonly IMaterialService _materialService;
 
     public ProductController(IProductService productService
         , ICategoryService categoryService
-        , IBrandService brandService)
+        , IBrandService brandService
+        , IColorService colorService
+        , ISizeService sizeService
+        , IMaterialService materialService)
     {
         _productService = productService;
         _categoryService = categoryService;
         _brandService = brandService;
+        _colorService = colorService;
+        _sizeService = sizeService;
+        _materialService = materialService;
     }
 
     public async Task<IActionResult> Detail(string id)

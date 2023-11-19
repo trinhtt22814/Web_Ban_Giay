@@ -11,6 +11,9 @@
     var information = AppVersion.IsEnglishVersion ? "Information" : "Thông tin thêm";
     var brand = AppVersion.IsEnglishVersion ? "Brand" : "Thương hiệu";
     var category = AppVersion.IsEnglishVersion ? "Category" : "Thể loại";
+    var color = AppVersion.IsEnglishVersion ? "Color" : "Màu sắc";
+    var size = AppVersion.IsEnglishVersion ? "Size" : "Kích cỡ";
+    var material = AppVersion.IsEnglishVersion ? "Material" : "Chất liệu";
     var discount = AppVersion.IsEnglishVersion ? "Discount" : "Giảm giá";
 }
 
@@ -67,6 +70,9 @@
                 }
                 <h4 class="p-stock">@brand: <span>@Model.Brand</span></h4>
                 <h4 class="p-stock">@category: <span>@Model.Category</span></h4>
+                <h4 class="p-stock">@color: <span>@Model.Color</span></h4>
+                <h4 class="p-stock">@size: <span>@Model.Size</span></h4>
+                <h4 class="p-stock">@material: <span>@Model.Material</span></h4>
                 <div class="quantity">
                     <p>@quantity</p>
                     <div class="pro-qty">

@@ -12,13 +12,19 @@ public class TestController : BaseController
     private readonly IPromotionService _promotionService;
     private readonly ICommonService _commonService;
     private readonly IOrderService _orderService;
+    private readonly IColorService _colorService;
+    private readonly ISizeService _sizeService;
+    private readonly IMaterialService _materialService;
 
     public TestController(IInitDataService initDataService
         , IIdentityService identityService
         , ICategoryService categoryService
         , ICommonService commonService
         , IPromotionService promotionService
-        , IOrderService orderService)
+        , IOrderService orderService
+        , IColorService colorService
+        , ISizeService sizeService
+        , IMaterialService materialService)
     {
         _initDataService = initDataService;
         _identityService = identityService;
@@ -26,6 +32,9 @@ public class TestController : BaseController
         _commonService = commonService;
         _promotionService = promotionService;
         _orderService = orderService;
+        _colorService = colorService;
+        _sizeService = sizeService;
+        _materialService = materialService;
     }
 
     public async Task<IActionResult> Index()

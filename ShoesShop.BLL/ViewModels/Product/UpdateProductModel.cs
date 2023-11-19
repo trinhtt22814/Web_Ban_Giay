@@ -17,5 +17,8 @@ public class UpdateProductModel
     public List<PropertyDetailModel>? Properties { get; set; }
     [Required] public Guid BrandId { get; set; }
     [Required] public Guid CategoryId { get; set; }
+    [Required] public Guid ColorId { get; set; }
+    [Required] public Guid SizeId { get; set; }
+    [Required] public Guid MaterialId { get; set; }
     public List<ImageDetailModel>? ListImage { get; set; }
 }

@@ -22,6 +22,9 @@ public class RatingService : IRatingService
         var products = await _dbContext.Products.Where(s => !s.IsDeleted).ToListAsync();
         var brands = await _dbContext.Brands.Where(s => !s.IsDeleted).ToListAsync();
         var categories = await _dbContext.Categories.Where(s => !s.IsDeleted).ToListAsync();
+        var colors = await _dbContext.Colors.Where(s => !s.IsDeleted).ToListAsync();
+        var sizes = await _dbContext.Sizes.Where(s => !s.IsDeleted).ToListAsync();
+        var materials = await _dbContext.Materials.Where(s => !s.IsDeleted).ToListAsync();
 
         var averageRatings = ratings.GroupBy(r => r.ProductId)
             .Select(g => new
@@ -35,12 +38,18 @@ public class RatingService : IRatingService
                    from rating in avgRatings.DefaultIfEmpty()
                    join b in brands on p.BrandId equals b.Id
                    join c in categories on p.CategoryId equals c.Id
+                   join color in colors on p.ColorId equals color.Id
+                   join size in sizes on p.SizeId equals size.Id
+                   join material in materials on p.MaterialId equals material.Id
                    select new
                    {
                        ProductName = p.Name,
                        Url = p.Url,
                        Brand = b.Name,
                        Category = c.Name,
+                       Color = color.Name,
+                       Size = size.Name,
+                       Material = material.Name,
                        DefaultImage = p.DefaultImage,
                        AverageRatingStart = rating?.AverageRatingStart,
                        ProductId = p.Id

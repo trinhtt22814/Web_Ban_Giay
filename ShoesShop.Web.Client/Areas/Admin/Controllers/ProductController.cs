@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ShoesShop.BLL.Common.ViewModels;
+using ShoesShop.BLL.Services.Interfaces;
 using ShoesShop.BLL.ViewModels.Images;
 using ShoesShop.BLL.ViewModels.Product;
 using ShoesShop.BLL.ViewModels.Property;
@@ -16,16 +17,25 @@ public class ProductController : BaseAdminController
     private readonly IBrandService _brandService;
     private readonly IWebHostEnvironment _webHostEnvironment;
     private readonly IProductService _productService;
+    private readonly IColorService _colorService;
+    private readonly ISizeService _sizeService;
+    private readonly IMaterialService _materialService;
 
     public ProductController(ICategoryService categoryService
         , IBrandService brandService
         , IWebHostEnvironment webHostEnvironment
-        , IProductService productService)
+        , IProductService productService
+        , IColorService colorService
+        , ISizeService sizeService
+        , IMaterialService materialService)
     {
         _categoryService = categoryService;
         _brandService = brandService;
         _webHostEnvironment = webHostEnvironment;
         _productService = productService;
+        _colorService = colorService;
+        _sizeService = sizeService;
+        _materialService = materialService;
     }
 
     public IActionResult Index()
@@ -57,11 +67,17 @@ public class ProductController : BaseAdminController
     {
         var brands = await _brandService.GetListBrand();
         var categories = await _categoryService.GetListCategory();
+        var colors = await _colorService.GetListColor();
+        var sizes = await _sizeService.GetListSize();
+        var materials = await _materialService.GetListMaterial();
 
         var modelFilter = new ProductFilterModel()
         {
             Brands = brands,
-            Categories = categories
+            Categories = categories,
+            Colors = colors,
+            Sizes = sizes,
+            Materials = materials
         };
 
         return View("AddNewProduct", modelFilter);
@@ -110,6 +126,9 @@ public class ProductController : BaseAdminController
     {
         var brands = await _brandService.GetListBrand();
         var categories = await _categoryService.GetListCategory();
+        var colors = await _colorService.GetListColor();
+        var sizes = await _sizeService.GetListSize();
+        var materials = await _materialService.GetListMaterial();
         var productDetail = await _productService.Detail(id);
 
         if (string.IsNullOrEmpty(productDetail?.Name))
@@ -121,6 +140,9 @@ public class ProductController : BaseAdminController
         {
             Brands = brands,
             Categories = categories,
+            Colors = colors,
+            Sizes = sizes,
+            Materials = materials,
             Product = productDetail
         };
 

@@ -17,5 +17,8 @@ namespace ShoesShop.DAL.Entities
         public Guid StatusId { get; set; }
         public Guid BrandId { get; set; }
         public Guid CategoryId { get; set; }
+        public Guid ColorId { get; set; }
+        public Guid SizeId { get; set; }
+        public Guid MaterialId { get; set; }
     }
 }

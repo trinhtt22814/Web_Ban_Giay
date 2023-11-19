@@ -119,6 +119,21 @@
                 isValid = false;
             }
 
+            if ($('#Color').val() === '') {
+                $('#sColor').show()
+                isValid = false;
+            }
+
+            if ($('#Size').val() === '') {
+                $('#sSize').show()
+                isValid = false;
+            }
+
+            if ($('#Material').val() === '') {
+                $('#sMaterial').show()
+                isValid = false;
+            }
+
             if ($('#Images')[0].files.length === 0) {
                 $('#sImages').show()
                 isValid = false;
@@ -139,6 +154,9 @@
                 formData.append('Name', $('#ProductName').val())
                 formData.append('CategoryId', $('#Category').val())
                 formData.append('BrandId', $('#Brand').val())
+                formData.append('ColorId', $('#Color').val())
+                formData.append('SizeId', $('#Size').val())
+                formData.append('MaterialId', $('#Material').val())
                 formData.append('Description', $('#Description').val())
                 formData.append('Price', price.toString())
                 formData.append('Currency', $('input[name=Currency]:checked').val())

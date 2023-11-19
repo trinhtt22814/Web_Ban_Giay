@@ -7,6 +7,9 @@
     var productName = AppVersion.IsEnglishVersion ? "Product Name" : "Tên sản phẩm";
     var category = AppVersion.IsEnglishVersion ? "Category" : "Thể loại";
     var brand = AppVersion.IsEnglishVersion ? "Brand" : "Thương hiệu";
+    var color = AppVersion.IsEnglishVersion ? "Color" : "Màu sắc";
+    var size = AppVersion.IsEnglishVersion ? "Size" : "Kích cỡ";
+    var material = AppVersion.IsEnglishVersion ? "Material" : "Chất liệu";
     var save = AppVersion.IsEnglishVersion ? "Save" : "Cập nhật";
     var description = AppVersion.IsEnglishVersion ? "Description" : "Miêu tả sản phẩm";
     var currency = AppVersion.IsEnglishVersion ? "Currency" : "Tiền tệ";
@@ -98,6 +101,78 @@
                                         }
                                     </select>
                                     <span class="text-danger required" id="sBrand" style="display: none;">@required</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="Color">
+                                        @color <span class="text-danger">*</span>
+                                    </label>
+                                    <select id="Color" class="form-control btn-square">
+                                        <option value=""></option>
+                                        @foreach (var item in Model.Colors)
+                                        {
+                                            if (item.Name.Equals(Model.Product.Color))
+                                            {
+                                                <option selected="selected" value="@item.Id">@item.Name</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@item.Id">@item.Name</option>
+                                            }
+                                        }
+                                    </select>
+                                    <span class="text-danger required" id="sColor" style="display: none;">@required</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="Size">
+                                        @size <span class="text-danger">*</span>
+                                    </label>
+                                    <select id="Brand" class="form-control btn-square">
+                                        <option value=""></option>
+                                        @foreach (var item in Model.Sizes)
+                                        {
+                                            if (item.Name.Equals(Model.Product.Size))
+                                            {
+                                                <option selected="selected" value="@item.Id">@item.Name</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@item.Id">@item.Name</option>
+                                            }
+                                        }
+                                    </select>
+                                    <span class="text-danger required" id="sSize" style="display: none;">@required</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="Material">
+                                        @material <span class="text-danger">*</span>
+                                    </label>
+                                    <select id="Brand" class="form-control btn-square">
+                                        <option value=""></option>
+                                        @foreach (var item in Model.Materials)
+                                        {
+                                            if (item.Name.Equals(Model.Product.Material))
+                                            {
+                                                <option selected="selected" value="@item.Id">@item.Name</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@item.Id">@item.Name</option>
+                                            }
+                                        }
+                                    </select>
+                                    <span class="text-danger required" id="sMaterial" style="display: none;">@required</span>
                                 </div>
                             </div>
                         </div>
