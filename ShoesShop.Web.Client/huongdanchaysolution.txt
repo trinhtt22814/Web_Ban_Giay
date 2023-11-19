@@ -1,0 +1,5 @@
+﻿B1: Mở ShoesShop.BLL -> Persistence -> WebDbContext. Đổi tên Data Source và Initial Catalog theo ý. Sau đó tiêp tục mở 
+ ShoesSop.Web.Client -> appsettings.json và làm tương tự.
+ B2: Chạy lệnh Update-Database.
+ B3: sau khi đã thành công thì chạy Websits -> chọn 'Menu khác' -> chọn 'Tạo dữ liệu' để add sẵn 1 số data và các account được fake sẵn.
+ B4: Sau khi dã thêm thành công thì Đăng nhập 1 trong tài khoản: admin@gmail.com, user@gmail.com,manager@gmail.com. VỚi password chung: 123@123Aa (password chung có trong appsettings.json )
