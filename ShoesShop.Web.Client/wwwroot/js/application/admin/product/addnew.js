@@ -1,4 +1,4 @@
-(function ($) {
+﻿(function ($) {
     'use strict';
 
     var properties = [];
@@ -92,7 +92,7 @@
             if (isNaN(p)) {
                 $('#sPrice2').show()
                 $('#Price').val('')
-            }else{
+            } else {
                 $('#sPrice2').hide()
             }
         })
@@ -132,7 +132,7 @@
             if ($('#Material').val() === '') {
                 $('#sMaterial').show()
                 isValid = false;
-            }    
+            }
 
             if ($('#Images')[0].files.length === 0) {
                 $('#sImages').show()
@@ -147,7 +147,7 @@
                 isValid = false;
             }
 
-            if (isValid){
+            if (isValid) {
                 var formData = new FormData();
 
                 formData.append('Id', $('#NewProductId').val())
@@ -161,7 +161,7 @@
                 formData.append('Price', price.toString())
                 formData.append('Currency', $('input[name=Currency]:checked').val())
 
-                for(var i = 0; i < $('#Images')[0].files.length; i++){
+                for (var i = 0; i < $('#Images')[0].files.length; i++) {
                     formData.append('Images', $('#Images')[0].files[i])
                 }
 
@@ -173,7 +173,7 @@
                 coreAjaxWithFormData(isValid, '/Admin/Product/SubmitCreate', formData, 'POST', function (res) {
                     toastMessage('success', 'Saved successfully');
                     window.location.href = '/Admin/Home/Index'
-                }, function () {});
+                }, function () { });
             }
         })
     }

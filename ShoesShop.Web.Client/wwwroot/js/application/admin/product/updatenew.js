@@ -1,4 +1,4 @@
-(function ($) {
+﻿(function ($) {
     'use strict';
 
     var properties = [];
@@ -17,7 +17,7 @@
                 tempProperties.push({
                     Name: name,
                     Value: value,
-                    ProductId: $('#NewProductId').val()
+                    ProductId: $('#ProductId').val()
                 })
             });
 
@@ -36,7 +36,7 @@
                     properties.push({
                         Name: name,
                         Value: value,
-                        ProductId: $('#NewProductId').val()
+                        ProductId: $('#ProductId').val()
                     })
                 });
 
@@ -85,15 +85,33 @@
         return isValid;
     }
 
-    var addNew = function () {
+    var update = function () {
         $('#Price').on('keyup', function () {
             var p = parseFloat($('#Price').val())
 
             if (isNaN(p)) {
                 $('#sPrice2').show()
                 $('#Price').val('')
-            }else{
+            } else {
                 $('#sPrice2').hide()
+            }
+        })
+
+        $('#Discount').on('keyup', function () {
+            var p = parseInt($('#Discount').val())
+            var current = parseInt($('#Price').val())
+
+            if (isNaN(p)) {
+                $('#sDiscount2').show()
+                $('#Discount').val('');
+                $('#sPriceAfterDiscount').hide()
+            } else {
+                $('#sDiscount2').hide();
+                if (!isNaN(current)) {
+                    var is = $('#IsEnglishVersionApp').val() === 'true' ? 'is' : 'là';
+                    $('#sPriceAfterDiscount').show()
+                    $('#PriceAfterDiscountValue').text(p + '% ' + is + ' ' + calDiscountPrice(current, p))
+                }
             }
         })
 
@@ -132,11 +150,6 @@
             if ($('#Material').val() === '') {
                 $('#sMaterial').show()
                 isValid = false;
-            }    
-
-            if ($('#Images')[0].files.length === 0) {
-                $('#sImages').show()
-                isValid = false;
             }
 
             var price = parseFloat($('#Price').val())
@@ -147,10 +160,18 @@
                 isValid = false;
             }
 
-            if (isValid){
+            var discountPercent = parseFloat($('#Discount').val())
+
+            if ((isNaN(discountPercent) || discountPercent <= 0) && $('#Discount').val() !== '') {
+                $('#sDiscount2').show()
+                $('#Discount').val('')
+                isValid = false;
+            }
+
+            if (isValid) {
                 var formData = new FormData();
 
-                formData.append('Id', $('#NewProductId').val())
+                formData.append('Id', $('#ProductId').val())
                 formData.append('Name', $('#ProductName').val())
                 formData.append('CategoryId', $('#Category').val())
                 formData.append('BrandId', $('#Brand').val())
@@ -160,8 +181,9 @@
                 formData.append('Description', $('#Description').val())
                 formData.append('Price', price.toString())
                 formData.append('Currency', $('input[name=Currency]:checked').val())
+                formData.append('Discount', discountPercent.toString())
 
-                for(var i = 0; i < $('#Images')[0].files.length; i++){
+                for (var i = 0; i < $('#Images')[0].files.length; i++) {
                     formData.append('Images', $('#Images')[0].files[i])
                 }
 
@@ -170,17 +192,25 @@
                     formData.append("Properties[" + k + "].Value", properties[k].Value);
                     formData.append("Properties[" + k + "].ProductId", properties[k].ProductId);
                 }
-                coreAjaxWithFormData(isValid, '/Admin/Product/SubmitCreate', formData, 'POST', function (res) {
+                coreAjaxWithFormData(isValid, '/Admin/Product/SubmitUpdate', formData, 'POST', function (res) {
                     toastMessage('success', 'Saved successfully');
                     window.location.href = '/Admin/Home/Index'
-                }, function () {});
+                }, function () { });
             }
         })
     }
 
+    var calDiscountPrice = function (current, discount) {
+        var discountPrice = current * (discount / 100);
+        var formatter = new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+        });
+        return formatter.format(current - discountPrice).split('.')[0];
+    }
     //Load functions
     $(document).ready(function () {
-        addNew();
+        update();
         addProperty();
     });
 })(jQuery);
