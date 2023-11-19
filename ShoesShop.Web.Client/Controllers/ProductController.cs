@@ -1,5 +1,4 @@
-﻿using BLL.Services.Interfaces;
-
+﻿using ShoesShop.BLL.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using ShoesShop.BLL.Services.Interfaces;
 using ShoesShop.BLL.ViewModels.Product;
@@ -66,6 +65,9 @@ public class ProductController : BaseController
         model.PagingResult = PagingHelper<ProductDetailModel>.ToPaging(dataList, page, 10, value, minPrice, maxPrice);
         model.Categories = await _categoryService.GetListCategory();
         model.Brands = await _brandService.GetListBrand();
+        model.Colors = await _colorService.GetListColor();
+        model.Sizes = await _sizeService.GetListSize();
+        model.Materials = await _materialService.GetListMaterial();
 
         return View(model);
     }
@@ -79,6 +81,9 @@ public class ProductController : BaseController
         model.PagingResult = PagingHelper<ProductDetailModel>.ToPaging(dataList, page, 10, value, minPrice, maxPrice);
         model.Categories = await _categoryService.GetListCategory();
         model.Brands = await _brandService.GetListBrand();
+        model.Colors = await _colorService.GetListColor();
+        model.Sizes = await _sizeService.GetListSize();
+        model.Materials = await _materialService.GetListMaterial();
 
         return View(model);
     }
@@ -93,6 +98,9 @@ public class ProductController : BaseController
             PagingHelper<ProductDetailModel>.ToPaging(dataList, page, 10, searchText, minPrice, maxPrice);
         model.Categories = await _categoryService.GetListCategory();
         model.Brands = await _brandService.GetListBrand();
+        model.Colors = await _colorService.GetListColor();
+        model.Sizes = await _sizeService.GetListSize();
+        model.Materials = await _materialService.GetListMaterial();
 
         return View(model);
     }
@@ -109,6 +117,9 @@ public class ProductController : BaseController
         model.PagingResult = PagingHelper<ProductDetailModel>.ToPaging(dataList, page, 10, "", minPrice, maxPrice);
         model.Categories = await _categoryService.GetListCategory();
         model.Brands = await _brandService.GetListBrand();
+        model.Colors = await _colorService.GetListColor();
+        model.Sizes = await _sizeService.GetListSize();
+        model.Materials = await _materialService.GetListMaterial();
 
         return View(model);
     }

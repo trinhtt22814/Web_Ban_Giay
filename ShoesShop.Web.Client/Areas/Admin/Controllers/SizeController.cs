@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using ShoesShop.BLL.Common.ViewModels;
 using ShoesShop.BLL.Services.Interfaces;
-using ShoesShop.BLL.ViewModels.Color;
 using ShoesShop.BLL.ViewModels.Size;
 using ShoesShop.DAL.Constants;
 

@@ -1,7 +1,7 @@
 ﻿using ShoesShop.BLL.ViewModels.Menu;
 using ShoesShop.BLL.ViewModels.Status;
 
-namespace BLL.Services.Interfaces;
+namespace ShoesShop.BLL.Services.Interfaces;
 
 public interface ICommonService
 {

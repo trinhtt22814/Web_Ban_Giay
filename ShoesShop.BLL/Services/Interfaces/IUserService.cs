@@ -1,6 +1,6 @@
 ﻿using ShoesShop.BLL.ViewModels.User;
 
-namespace BLL.Services.Interfaces;
+namespace ShoesShop.BLL.Services.Interfaces;
 
 public interface IUserService
 {

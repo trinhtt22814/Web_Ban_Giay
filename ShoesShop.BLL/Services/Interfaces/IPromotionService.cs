@@ -1,7 +1,7 @@
 ﻿using ShoesShop.BLL.Common.ViewModels;
 using ShoesShop.BLL.ViewModels.Promotion;
 
-namespace BLL.Services.Interfaces;
+namespace ShoesShop.BLL.Services.Interfaces;
 
 public interface IPromotionService
 {

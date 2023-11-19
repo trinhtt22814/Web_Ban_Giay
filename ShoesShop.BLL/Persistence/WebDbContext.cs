@@ -12,11 +12,6 @@ namespace ShoesShop.BLL.Persistence
     public class WebDbContext : IdentityDbContext<AppUser, AppRole, Guid>
     {
         private readonly IIdentityService _identityService;
-
-        public WebDbContext()
-        {
-        }
-
         public WebDbContext(DbContextOptions options, IIdentityService identityService) : base(options)
         {
             _identityService = identityService;

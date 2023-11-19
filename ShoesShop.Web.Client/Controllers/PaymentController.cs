@@ -1,5 +1,6 @@
-﻿using BLL.Services.Interfaces;
+﻿using ShoesShop.BLL.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using ShoesShop.BLL.Services.Interfaces;
 using ShoesShop.BLL.ViewModels.Checkout;
 using ShoesShop.BLL.ViewModels.Order;
 using ShoesShop.BLL.ViewModels.Payment;

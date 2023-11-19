@@ -1,7 +1,6 @@
 ﻿using ShoesShop.BLL.ViewModels.Order;
-using ShoesShop.BLL.ViewModels.Order;
 
-namespace BLL.Services.Interfaces;
+namespace ShoesShop.BLL.Services.Interfaces;
 
 public interface IOrderService
 {

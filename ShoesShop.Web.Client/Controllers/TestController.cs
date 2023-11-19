@@ -1,6 +1,5 @@
-﻿using BLL.Services.Interfaces;
+﻿using ShoesShop.BLL.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using ShoesShop.BLL.Services.Interfaces;
 
 namespace ShoesShop.Web.Client.Controllers;
 
@@ -9,6 +8,7 @@ public class TestController : BaseController
     private readonly IInitDataService _initDataService;
     private readonly IIdentityService _identityService;
     private readonly ICategoryService _categoryService;
+    private readonly IBrandService _brandService;
     private readonly IPromotionService _promotionService;
     private readonly ICommonService _commonService;
     private readonly IOrderService _orderService;
@@ -19,6 +19,7 @@ public class TestController : BaseController
     public TestController(IInitDataService initDataService
         , IIdentityService identityService
         , ICategoryService categoryService
+        , IBrandService brandService
         , ICommonService commonService
         , IPromotionService promotionService
         , IOrderService orderService
@@ -29,6 +30,7 @@ public class TestController : BaseController
         _initDataService = initDataService;
         _identityService = identityService;
         _categoryService = categoryService;
+        _brandService = brandService;
         _commonService = commonService;
         _promotionService = promotionService;
         _orderService = orderService;

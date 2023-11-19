@@ -10,6 +10,9 @@
     var addToCart = AppVersion.IsEnglishVersion ? "ADD TO CART" : "THÊM GIỎ HÀNG";
     var category = AppVersion.IsEnglishVersion ? "Categories" : "Thể loại";
     var brand = AppVersion.IsEnglishVersion ? "Brand" : "Thương hiệu";
+    var color = AppVersion.IsEnglishVersion ? "Color" : "Màu sắc";
+    var size = AppVersion.IsEnglishVersion ? "Size" : "Kích cỡ";
+    var material = AppVersion.IsEnglishVersion ? "Material" : "Chất liệu";
     var product = AppVersion.IsEnglishVersion ? "Products" : "Sản phẩm";
     var home = AppVersion.IsEnglishVersion ? "Home" : "Trang chủ";
 }
@@ -51,6 +54,39 @@
                         {
                             <li>
                                 <a href="/Product/Brand?value=@item.Code">@item.Name</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+                <div class="filter-widget">
+                    <h2 class="fw-title">@color</h2>
+                    <ul class="category-menu">
+                        @foreach (var item in Model.Colors)
+                        {
+                            <li>
+                                <a href="/Product/Color?value=@item.Code">@item.Name</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+                <div class="filter-widget">
+                    <h2 class="fw-title">@size</h2>
+                    <ul class="category-menu">
+                        @foreach (var item in Model.Sizes)
+                        {
+                            <li>
+                                <a href="/Product/Size?value=@item.Code">@item.Name</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+                <div class="filter-widget">
+                    <h2 class="fw-title">@material</h2>
+                    <ul class="category-menu">
+                        @foreach (var item in Model.Materials)
+                        {
+                            <li>
+                                <a href="/Product/Material?value=@item.Code">@item.Name</a>
                             </li>
                         }
                     </ul>

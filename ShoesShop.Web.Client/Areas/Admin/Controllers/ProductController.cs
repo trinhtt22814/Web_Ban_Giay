@@ -1,8 +1,7 @@
-﻿using BLL.Services.Interfaces;
+﻿using ShoesShop.BLL.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ShoesShop.BLL.Common.ViewModels;
-using ShoesShop.BLL.Services.Interfaces;
 using ShoesShop.BLL.ViewModels.Images;
 using ShoesShop.BLL.ViewModels.Product;
 using ShoesShop.BLL.ViewModels.Property;

@@ -1,6 +1,6 @@
 ﻿using ShoesShop.BLL.ViewModels.Rating;
 
-namespace BLL.Services.Interfaces;
+namespace ShoesShop.BLL.Services.Interfaces;
 
 public interface IRatingService
 {

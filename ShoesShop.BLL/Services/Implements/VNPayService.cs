@@ -1,10 +1,10 @@
-﻿using BLL.Services.Interfaces;
-using Mapster;
+﻿using Mapster;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using ShoesShop.BLL.Common.Options;
 using ShoesShop.BLL.Common.ViewModels;
+using ShoesShop.BLL.Services.Interfaces;
 using ShoesShop.BLL.ViewModels.Payment;
 using ShoesShop.DAL.Helpers;
 using ShoesShop.DAL.Libs;

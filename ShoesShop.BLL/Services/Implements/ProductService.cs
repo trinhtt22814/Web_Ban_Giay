@@ -1,4 +1,4 @@
-﻿using BLL.Services.Interfaces;
+﻿using ShoesShop.BLL.Services.Interfaces;
 using Mapster;
 using Microsoft.EntityFrameworkCore;
 using ShoesShop.BLL.Persistence;
@@ -88,8 +88,6 @@ public class ProductService : IProductService
             product.Url = model.Name.VietnameseToNormalString();
             product.OriginLinkDetail = model.Name.ToStringCode();
             product.DefaultImage = model.ListImage.First().LocalLinkImage;
-
-            product.CreatedBy = "Admin";
 
             await _dbContext.Products.AddAsync(product);
             await _dbContext.SaveChangesAsync(new CancellationToken());
@@ -270,12 +268,12 @@ public class ProductService : IProductService
                     string.Equals(s.CategoryCode, typeValue, StringComparison.CurrentCultureIgnoreCase)).ToList(),
                 "brand" => finalData.Where(s =>
                     string.Equals(s.BrandCode, typeValue, StringComparison.CurrentCultureIgnoreCase)).ToList(),
-                //"color" => finalData.Where(s =>
-                //string.Equals(s.ColorCode, typeValue, StringComparison.CurrentCultureIgnoreCase)).ToList(),
-                //"size" => finalData.Where(s =>
-                //    string.Equals(s.SizeCode, typeValue, StringComparison.CurrentCultureIgnoreCase)).ToList(),
-                //"material" => finalData.Where(s =>
-                //string.Equals(s.MaterialCode, typeValue, StringComparison.CurrentCultureIgnoreCase)).ToList(),
+                "color" => finalData.Where(s =>
+                string.Equals(s.ColorCode, typeValue, StringComparison.CurrentCultureIgnoreCase)).ToList(),
+                "size" => finalData.Where(s =>
+                    string.Equals(s.SizeCode, typeValue, StringComparison.CurrentCultureIgnoreCase)).ToList(),
+                "material" => finalData.Where(s =>
+                string.Equals(s.MaterialCode, typeValue, StringComparison.CurrentCultureIgnoreCase)).ToList(),
                 _ => finalData
             };
         }
