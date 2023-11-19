@@ -12,8 +12,8 @@ using ShoesShop.BLL.Persistence;
 namespace ShoesShop.BLL.Migrations
 {
     [DbContext(typeof(WebDbContext))]
-    [Migration("20231118164549_create_db")]
-    partial class create_db
+    [Migration("20231119131013_create-db")]
+    partial class createdb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -629,6 +629,9 @@ namespace ShoesShop.BLL.Migrations
                     b.Property<Guid>("CategoryId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid>("ColorId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
@@ -654,6 +657,9 @@ namespace ShoesShop.BLL.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
+                    b.Property<Guid>("MaterialId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(500)
@@ -665,6 +671,9 @@ namespace ShoesShop.BLL.Migrations
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
+
+                    b.Property<Guid>("SizeId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("StatusId")
                         .HasColumnType("uniqueidentifier");

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ShoesShop.BLL.Migrations
 {
-    public partial class create_db : Migration
+    public partial class createdb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -312,6 +312,9 @@ namespace ShoesShop.BLL.Migrations
                     StatusId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     BrandId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CategoryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ColorId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    SizeId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    MaterialId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdatedBy = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
