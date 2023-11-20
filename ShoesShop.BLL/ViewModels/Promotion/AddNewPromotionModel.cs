@@ -4,6 +4,6 @@ namespace ShoesShop.BLL.ViewModels.Promotion;
 
 public class AddNewPromotionModel : AuditModel
 {
-    public string Code { get; set; }
-    public int DiscountPercent { set; get; }
+	public string Code { get; set; }
+	public int DiscountPercent { set; get; }
 }

@@ -4,11 +4,11 @@ namespace ShoesShop.BLL.Services.Interfaces;
 
 public interface IRatingService
 {
-    Task<List<RatingDetailModel>> GetListRating();
+	Task<List<RatingDetailModel>> GetListRating();
 
-    Task<bool> UpdateRating(RatingUpdateModel model);
+	Task<bool> UpdateRating(RatingUpdateModel model);
 
-    Task<int> GetRatingDetail(RatingFilterModel model);
+	Task<int> GetRatingDetail(RatingFilterModel model);
 
-    Task<double> GetAverageStarPoint(RatingFilterModel model);
+	Task<double> GetAverageStarPoint(RatingFilterModel model);
 }

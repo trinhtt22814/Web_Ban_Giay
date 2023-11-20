@@ -27,7 +27,7 @@ Chart.defaults.global = {
     tooltipFontStyle: "normal",
     tooltipFontColor: "#fff",
     tooltipTitleFontSize: 16,
-    TitleFontStyle : "Raleway",
+    TitleFontStyle: "Raleway",
     tooltipTitleFontStyle: "bold",
     tooltipTitleFontColor: "#ffffff",
     tooltipYPadding: 10,
@@ -35,8 +35,8 @@ Chart.defaults.global = {
     tooltipCaretSize: 8,
     tooltipCornerRadius: 6,
     tooltipXOffset: 5,
-    onAnimationProgress: function() {},
-    onAnimationComplete: function() {}
+    onAnimationProgress: function () { },
+    onAnimationComplete: function () { }
 };
 var barData = {
     labels: ["January", "February", "March", "April", "May", "June", "July"],
@@ -255,13 +255,13 @@ var doughnutOptions = {
 var doughnutCtx = document.getElementById("myDoughnutGraph").getContext("2d");
 var myDoughnutChart = new Chart(doughnutCtx).Doughnut(doughnutData, doughnutOptions);
 var myLineChart = {
-    labels: ["","10", "20", "30", "40", "50", "60", "70", "80"],
+    labels: ["", "10", "20", "30", "40", "50", "60", "70", "80"],
     datasets: [{
         fillColor: "rgba(68, 102, 242, 0.2)",
         strokeColor: "#544fff",
         pointColor: "#544fff",
         data: [10, 20, 40, 30, 0, 20, 10, 30, 10]
-    },{
+    }, {
         fillColor: "rgba(30, 166, 236, 0.2)",
         strokeColor: "#158df7",
         pointColor: "#158df7",

@@ -1,8 +1,8 @@
-$(window).scroll(function() {
-    if ($(this).scrollTop() > 350){
+$(window).scroll(function () {
+    if ($(this).scrollTop() > 350) {
         $('header').addClass("sticky");
     }
-    else{
+    else {
         $('header').removeClass("sticky");
     }
 });

@@ -1,12 +1,12 @@
-(function($) {
+(function ($) {
     "use strict";
-    $('.icon-lists div').click( function() {
+    $('.icon-lists div').click(function () {
         $(".icon-lists").addClass('m-b-50');
         $(".fa-fa-icon-show-div").show();
         $(".fa-fa-icon-show-div").removeClass('opecity-0');
         var font_class = ($(this).children().attr('class'));
-        var fafaclass= '&lt;i class="'+ font_class + '"&gt';
-        var fafaclass1= '<i class="'+ font_class + '"></i>';
+        var fafaclass = '&lt;i class="' + font_class + '"&gt';
+        var fafaclass1 = '<i class="' + font_class + '"></i>';
         $("#fclass").html(fafaclass);
         $("#fclass1").html(font_class);
         $("#icon_main").removeClass();
@@ -14,7 +14,7 @@
         $("#icon_main").addClass("fa-2x");
         $(".inp-val").val(fafaclass1);
     });
-    $(".close-icon").click(function(){
+    $(".close-icon").click(function () {
         $(".icon-hover-bottom").addClass("opecity-0");
         $(".fa-fa-icon-show-div").hide();
         $(".icon-lists").removeClass('m-b-50');

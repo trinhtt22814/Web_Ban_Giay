@@ -4,7 +4,7 @@ $(function () {
         container: 'body'
     });
     var dcolor = $(".example-popover").attr("data-theme");
-    if(dcolor == "dark") {
+    if (dcolor == "dark") {
         $(".popover").addClass("bg-dark");
     }
 })

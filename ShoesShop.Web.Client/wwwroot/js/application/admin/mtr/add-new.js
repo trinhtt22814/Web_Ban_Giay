@@ -12,13 +12,13 @@
             $('#Existed').text('');
             $('#Existed').hide();
 
-            if (isExistedAddNew(0, val)){
+            if (isExistedAddNew(0, val)) {
                 $('#Existed').text($('#existedText').val());
                 $('#Existed').show();
                 check = false;
             }
 
-            if (check){
+            if (check) {
                 coreAjax(
                     check
                     , '/Admin/Material/SubmitAddNew'

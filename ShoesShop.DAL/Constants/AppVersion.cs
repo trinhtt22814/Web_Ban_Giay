@@ -2,5 +2,5 @@
 
 public static class AppVersion
 {
-    public static bool IsEnglishVersion = false;
+	public static bool IsEnglishVersion = false;
 }

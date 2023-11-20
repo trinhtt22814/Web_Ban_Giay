@@ -10,10 +10,10 @@ namespace ShoesShop.BLL.ViewModels.Search;
 
 public class SearchPageModel
 {
-    public PagingResult<ProductDetailModel> PagingResult { get; set; }
-    public List<CategoryDetailModel> Categories { get; set; }
-    public List<ColorDetailModel> Colors { get; set; }
-    public List<SizeDetailModel> Sizes { get; set; }
-    public List<MaterialDetailModel> Materials { get; set; }
-    public List<BrandDetailModel> Brands { get; set; }
+	public PagingResult<ProductDetailModel> PagingResult { get; set; }
+	public List<CategoryDetailModel> Categories { get; set; }
+	public List<ColorDetailModel> Colors { get; set; }
+	public List<SizeDetailModel> Sizes { get; set; }
+	public List<MaterialDetailModel> Materials { get; set; }
+	public List<BrandDetailModel> Brands { get; set; }
 }

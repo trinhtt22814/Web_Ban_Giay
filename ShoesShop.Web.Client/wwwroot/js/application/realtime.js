@@ -6,16 +6,16 @@ const connection = new signalR.HubConnectionBuilder()
     .configureLogging(signalR.LogLevel.Information)
     .build();
 
-connection.start().then(function (){
+connection.start().then(function () {
     console.log('listening')
-}).catch(function(err) {
+}).catch(function (err) {
     console.error(err.toString());
 });
 
 var sendMessage = function (type, message) {
-    connection.invoke(method, type, message).then(function() {
+    connection.invoke(method, type, message).then(function () {
         $("#message").val('');
-    }).catch(function(err) {
+    }).catch(function (err) {
         console.error(err.toString());
     });
 }

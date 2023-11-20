@@ -4,11 +4,11 @@ namespace ShoesShop.BLL.Services.Interfaces;
 
 public interface IIdentityService
 {
-    CurrentUserModel GetCurrentUserLogin();
+	CurrentUserModel GetCurrentUserLogin();
 
-    bool IsUnAuthorized();
+	bool IsUnAuthorized();
 
-    bool IsInRoleAsync(string role);
+	bool IsInRoleAsync(string role);
 
-    bool IsEmailConfirmed();
+	bool IsEmailConfirmed();
 }

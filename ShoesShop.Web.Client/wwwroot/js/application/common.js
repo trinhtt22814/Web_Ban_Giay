@@ -313,5 +313,5 @@ var onViewPromotions = function () {
         $('#modal-popup-order-detail-check').modal('hide');
         $("#modal-body-order-detail").html(response);
         $('#modal-popup-order-detail').modal('show');
-    }, function () {});
+    }, function () { });
 }

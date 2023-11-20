@@ -18,7 +18,7 @@
             e.preventDefault();
             var id = $(this).attr('data-id')
             sweetAlertDeleteConfirmation('/Admin/Brand/Delete', id, $('#TitleDelete').val(), $('#TextDelete').val(),
-                function() { getListBrand() })
+                function () { getListBrand() })
         });
     }
 

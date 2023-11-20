@@ -34,9 +34,9 @@ let URL = {
             e.preventDefault();
             let year = $('#Year').val();
             let month = $('#Month').val();
-            if (parseInt(year) > 0 && parseInt(month)){
+            if (parseInt(year) > 0 && parseInt(month)) {
                 generateChartReportByMonthOfYear(month, year, true);
-            }else{
+            } else {
                 toastMessage('error', 'Please select Year and Month!');
             }
         });
@@ -73,7 +73,7 @@ let URL = {
                     label: e.valueX
                 })
             });
-            renderChart(DOM.ChartByMonthOfYear, 'line', dataPoints, '{y}', 'Day {label} - {y}', 'Day <b>{label}</b> - {y}','', titleChart, 'VND', 'Days of Month');
+            renderChart(DOM.ChartByMonthOfYear, 'line', dataPoints, '{y}', 'Day {label} - {y}', 'Day <b>{label}</b> - {y}', '', titleChart, 'VND', 'Days of Month');
         });
     }
 

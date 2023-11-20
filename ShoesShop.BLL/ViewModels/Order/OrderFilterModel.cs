@@ -5,7 +5,7 @@ namespace ShoesShop.BLL.ViewModels.Order;
 
 public class OrderFilterModel : AuditModel
 {
-    public OrderDetailModel OrderDetail { get; set; }
-    public List<StatusDetailModel> ListOrderStatus { get; set; }
-    public List<StatusDetailModel> ListPaymentStatus { get; set; }
+	public OrderDetailModel OrderDetail { get; set; }
+	public List<StatusDetailModel> ListOrderStatus { get; set; }
+	public List<StatusDetailModel> ListPaymentStatus { get; set; }
 }

@@ -2,5 +2,5 @@
 
 public interface IInitDataService
 {
-    Task InitData();
+	Task InitData();
 }

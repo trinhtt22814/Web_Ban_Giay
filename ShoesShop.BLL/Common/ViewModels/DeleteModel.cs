@@ -2,5 +2,5 @@
 
 public class DeleteModel
 {
-    public Guid Id { get; set; }
+	public Guid Id { get; set; }
 }

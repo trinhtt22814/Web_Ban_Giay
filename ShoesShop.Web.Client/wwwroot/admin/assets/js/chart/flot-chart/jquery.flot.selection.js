@@ -6,10 +6,10 @@ Licensed under the MIT license.
 The plugin supports these options:
 
 selection: {
-	mode: null or "x" or "y" or "xy",
-	color: color,
-	shape: "round" or "miter" or "bevel",
-	minSize: number of pixels
+    mode: null or "x" or "y" or "xy",
+    color: color,
+    shape: "round" or "miter" or "bevel",
+    minSize: number of pixels
 }
 
 Selection support is enabled by setting the mode to one of "x", "y" or "xy".
@@ -33,11 +33,11 @@ When selection support is enabled, a "plotselected" event will be emitted on
 the DOM element you passed into the plot function. The event handler gets a
 parameter with the ranges selected on the axes, like this:
 
-	placeholder.bind( "plotselected", function( event, ranges ) {
-		alert("You selected " + ranges.xaxis.from + " to " + ranges.xaxis.to)
-		// similar for yaxis - with multiple axes, the extra ones are in
-		// x2axis, x3axis, ...
-	});
+    placeholder.bind( "plotselected", function( event, ranges ) {
+        alert("You selected " + ranges.xaxis.from + " to " + ranges.xaxis.to)
+        // similar for yaxis - with multiple axes, the extra ones are in
+        // x2axis, x3axis, ...
+    });
 
 The "plotselected" event is only fired when the user has finished making the
 selection. A "plotselecting" event is fired during the process with the same
@@ -58,7 +58,7 @@ The plugin allso adds the following methods to the plot object:
   an yaxis range and both xaxis and yaxis if the selection mode is "xy", like
   this:
 
-	setSelection({ xaxis: { from: 0, to: 10 }, yaxis: { from: 40, to: 60 } });
+    setSelection({ xaxis: { from: 0, to: 10 }, yaxis: { from: 40, to: 60 } });
 
   setSelection will trigger the "plotselected" event when called. If you don't
   want that to happen, e.g. if you're inside a "plotselected" handler, pass
@@ -81,10 +81,10 @@ The plugin allso adds the following methods to the plot object:
 (function ($) {
     function init(plot) {
         var selection = {
-                first: { x: -1, y: -1}, second: { x: -1, y: -1},
-                show: false,
-                active: false
-            };
+            first: { x: -1, y: -1 }, second: { x: -1, y: -1 },
+            show: false,
+            active: false
+        };
 
         // FIXME: The drag handling implemented here should be
         // abstracted out, there's some similar code from a library in
@@ -99,7 +99,7 @@ The plugin allso adds the following methods to the plot object:
             if (selection.active) {
                 updateSelection(e);
 
-                plot.getPlaceholder().trigger("plotselecting", [ getSelection() ]);
+                plot.getPlaceholder().trigger("plotselecting", [getSelection()]);
             }
         }
 
@@ -148,8 +148,8 @@ The plugin allso adds the following methods to the plot object:
                 triggerSelectedEvent();
             else {
                 // this counts as a clear
-                plot.getPlaceholder().trigger("plotunselected", [ ]);
-                plot.getPlaceholder().trigger("plotselecting", [ null ]);
+                plot.getPlaceholder().trigger("plotunselected", []);
+                plot.getPlaceholder().trigger("plotselecting", [null]);
             }
 
             return false;
@@ -174,15 +174,15 @@ The plugin allso adds the following methods to the plot object:
         function triggerSelectedEvent() {
             var r = getSelection();
 
-            plot.getPlaceholder().trigger("plotselected", [ r ]);
+            plot.getPlaceholder().trigger("plotselected", [r]);
 
             // backwards-compat stuff, to be removed in future
             if (r.xaxis && r.yaxis)
-                plot.getPlaceholder().trigger("selected", [ { x1: r.xaxis.from, y1: r.yaxis.from, x2: r.xaxis.to, y2: r.yaxis.to } ]);
+                plot.getPlaceholder().trigger("selected", [{ x1: r.xaxis.from, y1: r.yaxis.from, x2: r.xaxis.to, y2: r.yaxis.to }]);
         }
 
         function clamp(min, value, max) {
-            return value < min ? min: (value > max ? max: value);
+            return value < min ? min : (value > max ? max : value);
         }
 
         function setSelectionPos(pos, e) {
@@ -217,7 +217,7 @@ The plugin allso adds the following methods to the plot object:
                 selection.show = false;
                 plot.triggerRedrawOverlay();
                 if (!preventEvent)
-                    plot.getPlaceholder().trigger("plotunselected", [ ]);
+                    plot.getPlaceholder().trigger("plotunselected", []);
             }
         }
 
@@ -297,7 +297,7 @@ The plugin allso adds the following methods to the plot object:
         plot.setSelection = setSelection;
         plot.getSelection = getSelection;
 
-        plot.hooks.bindEvents.push(function(plot, eventHolder) {
+        plot.hooks.bindEvents.push(function (plot, eventHolder) {
             var o = plot.getOptions();
             if (o.selection.mode != null) {
                 eventHolder.mousemove(onMouseMove);

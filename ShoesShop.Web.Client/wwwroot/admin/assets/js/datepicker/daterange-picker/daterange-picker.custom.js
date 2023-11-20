@@ -1,11 +1,11 @@
 //DateRange Picker
-(function($) {
+(function ($) {
     "use strict";
-    $(function() {
+    $(function () {
         $('input[name="daterange"]').daterangepicker();
     });
-//Date and Time
-    $(function() {
+    //Date and Time
+    $(function () {
         $('input[name="daterange2"]').daterangepicker({
             timePicker: true,
             timePickerIncrement: 30,
@@ -14,20 +14,20 @@
             }
         });
     });
-// Single Date Picker
-    $(function() {
+    // Single Date Picker
+    $(function () {
         $('input[name="birthdate"]').daterangepicker({
-                singleDatePicker: true,
-                showDropdowns: true
-            },
-            function(start, end, label) {
+            singleDatePicker: true,
+            showDropdowns: true
+        },
+            function (start, end, label) {
                 var years = moment().diff(start, 'years');
                 alert("You are " + years + " years old.");
             });
     });
 
-//Predefined Ranges
-    $(function() {
+    //Predefined Ranges
+    $(function () {
         var start = moment().subtract(29, 'days');
         var end = moment();
 
@@ -50,8 +50,8 @@
 
         cb(start, end);
     });
-//Input Initially Empty
-    $(function() {
+    //Input Initially Empty
+    $(function () {
         $('input[name="datefilter"]').daterangepicker({
             autoUpdateInput: false,
             locale: {
@@ -59,11 +59,11 @@
             }
         });
 
-        $('input[name="datefilter"]').on('apply.daterangepicker', function(ev, picker) {
+        $('input[name="datefilter"]').on('apply.daterangepicker', function (ev, picker) {
             $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
         });
 
-        $('input[name="datefilter"]').on('cancel.daterangepicker', function(ev, picker) {
+        $('input[name="datefilter"]').on('cancel.daterangepicker', function (ev, picker) {
             $(this).val('');
         });
     });

@@ -3,8 +3,8 @@
 
     let $star_rating = $('.star-rating .fa');
 
-    let setRatingStar = function() {
-        return $star_rating.each(function() {
+    let setRatingStar = function () {
+        return $star_rating.each(function () {
             if (parseInt($star_rating.siblings('input.rating-value').val()) >= parseInt($(this).data('rating'))) {
                 return $(this).removeClass('fa-star-o').addClass('fa-star');
             } else {
@@ -13,7 +13,7 @@
         });
     };
 
-    $star_rating.on('click', function() {
+    $star_rating.on('click', function () {
         let currentValue = $('input.rating-value').val();
         let title = $("#ProductName").val();
 
@@ -24,11 +24,11 @@
             StarPoint: starPoint
         };
 
-        if(currentValue !== starPoint){
+        if (currentValue !== starPoint) {
             coreAjax(true, '/Rating/Update', JSON.stringify(data), 'POST', function (res) {
-                if (res===true){
+                if (res === true) {
                     toastMessage('success', `You voted ${starPoint} star point \"${title}\"`);
-                }else{
+                } else {
                     toastMessage('error', 'Something went wrong! Are you login?');
                     currentValue = 0;
                     $('input.rating-value').val(currentValue);

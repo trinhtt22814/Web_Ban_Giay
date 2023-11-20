@@ -1,4 +1,4 @@
-$(window).on('load',function(){
+$(window).on('load', function () {
     $('#loadModal').modal('show');
 });
 
@@ -26,12 +26,12 @@ new Chartist.Bar('.small-chart', {
         showGrid: false,
         showLabel: false,
         offset: 0,
-        labelInterpolationFnc: function(value) {
+        labelInterpolationFnc: function (value) {
             return (value / 1000) + 'k';
         }
     }
-}).on('draw', function(data) {
-    if(data.type === 'bar') {
+}).on('draw', function (data) {
+    if (data.type === 'bar') {
         data.element.attr({
             style: 'stroke-width: 3px'
         });
@@ -62,12 +62,12 @@ new Chartist.Bar('.small-chart1', {
         showGrid: false,
         showLabel: false,
         offset: 0,
-        labelInterpolationFnc: function(value) {
+        labelInterpolationFnc: function (value) {
             return (value / 1000) + 'k';
         }
     }
-}).on('draw', function(data) {
-    if(data.type === 'bar') {
+}).on('draw', function (data) {
+    if (data.type === 'bar') {
         data.element.attr({
             style: 'stroke-width: 3px'
         });
@@ -98,12 +98,12 @@ new Chartist.Bar('.small-chart2', {
         showGrid: false,
         showLabel: false,
         offset: 0,
-        labelInterpolationFnc: function(value) {
+        labelInterpolationFnc: function (value) {
             return (value / 1000) + 'k';
         }
     }
-}).on('draw', function(data) {
-    if(data.type === 'bar') {
+}).on('draw', function (data) {
+    if (data.type === 'bar') {
         data.element.attr({
             style: 'stroke-width: 3px'
         });
@@ -111,30 +111,30 @@ new Chartist.Bar('.small-chart2', {
 });
 //column-chart
 var options3 = {
-        chart: {
-            height: 280,
-            type: 'bar',
-            toolbar: {
-                show: false
-            }
-        },
-        plotOptions: {
-            bar: {
-                horizontal: false,
-                endingShape: 'rounded',
-                columnWidth: '25px'
-            }
-        },
-        dataLabels: {
-            enabled: false
-        },
-        stroke: {
-            show: true,
-            width: 8,
-            colors: ['transparent']
-        },
-        responsive: [
-           {
+    chart: {
+        height: 280,
+        type: 'bar',
+        toolbar: {
+            show: false
+        }
+    },
+    plotOptions: {
+        bar: {
+            horizontal: false,
+            endingShape: 'rounded',
+            columnWidth: '25px'
+        }
+    },
+    dataLabels: {
+        enabled: false
+    },
+    stroke: {
+        show: true,
+        width: 8,
+        colors: ['transparent']
+    },
+    responsive: [
+        {
             breakpoint: 992,
             options: {
                 stroke: {
@@ -144,64 +144,64 @@ var options3 = {
                     height: 200
                 }
             }
-           },
-            {
-                breakpoint: 480,
-                options: {
-                    stroke: {
-                        width: 1
-                    }
-                }
-            },
-            {
-                breakpoint: 420,
-                options: {
-                    stroke: {
-                        width: 1
-                    }
-                }
-            }
-         ],
-        series: [{
-            name: '<b>ICU</b> (intensive care unit)',
-            data: [80, 45, 114, 20, 80, 40, 55, 40]
-        }, {
-            name: '<b>OPD</b> (out patient Department)',
-            data: [35, 65, 80, 68, 60, 70, 20, 80]
-        } ],
-        xaxis: {
-            categories:[0],
-            labels: {
-                low: 0,
-                offsetX: 0,
-                show: false
-            },
-            axisBorder: {
-                low: 0,
-                offsetX: 0,
-                show: false
-            }
         },
-        fill: {
-            colors:[creativeAdminConfig.primary, creativeAdminConfig.secondary],
-            type: 'gradient',
-            gradient: {
-                shade: 'light',
-                type: 'vertical',
-                shadeIntensity: 0.3,
-                inverseColors: true,
-                opacityFrom: 1,
-                opacityTo: 1,
-                stops: [0, 100]
-            }
-        },
-        tooltip: {
-            y: {
-                formatter: function (val) {
-                    return "$ " + val + " thousands"
+        {
+            breakpoint: 480,
+            options: {
+                stroke: {
+                    width: 1
                 }
             }
         },
+        {
+            breakpoint: 420,
+            options: {
+                stroke: {
+                    width: 1
+                }
+            }
+        }
+    ],
+    series: [{
+        name: '<b>ICU</b> (intensive care unit)',
+        data: [80, 45, 114, 20, 80, 40, 55, 40]
+    }, {
+        name: '<b>OPD</b> (out patient Department)',
+        data: [35, 65, 80, 68, 60, 70, 20, 80]
+    }],
+    xaxis: {
+        categories: [0],
+        labels: {
+            low: 0,
+            offsetX: 0,
+            show: false
+        },
+        axisBorder: {
+            low: 0,
+            offsetX: 0,
+            show: false
+        }
+    },
+    fill: {
+        colors: [creativeAdminConfig.primary, creativeAdminConfig.secondary],
+        type: 'gradient',
+        gradient: {
+            shade: 'light',
+            type: 'vertical',
+            shadeIntensity: 0.3,
+            inverseColors: true,
+            opacityFrom: 1,
+            opacityTo: 1,
+            stops: [0, 100]
+        }
+    },
+    tooltip: {
+        y: {
+            formatter: function (val) {
+                return "$ " + val + " thousands"
+            }
+        }
+    },
     grid: {
         borderColor: "#f5f8fd",
         clipMarkers: false,
@@ -218,7 +218,7 @@ var options3 = {
             }
         }
     },
-colors:[creativeAdminConfig.primary, creativeAdminConfig.secondary]
+    colors: [creativeAdminConfig.primary, creativeAdminConfig.secondary]
 };
 
 var chart3 = new ApexCharts(

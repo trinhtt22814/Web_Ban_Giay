@@ -46,7 +46,7 @@ var addCartToLocal = function () {
 }
 
 var initItemCartCheckout = function () {
-    if ($('#is-checkout-page').length > 0){
+    if ($('#is-checkout-page').length > 0) {
         onChangeValueQuantity();
     }
 }

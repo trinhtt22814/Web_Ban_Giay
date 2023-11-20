@@ -1,72 +1,72 @@
 'use strict';
 var tree_custom = {
-    init: function() {
+    init: function () {
         $('#treeBasic').jstree({
-            'core' : {
-                'themes' : {
+            'core': {
+                'themes': {
                     'responsive': false
                 }
             },
-            'types' : {
-                'default' : {
-                    'icon' : 'icofont icofont-folder font-theme'
+            'types': {
+                'default': {
+                    'icon': 'icofont icofont-folder font-theme'
                 },
-                'file' : {
-                    'icon' : 'icofont icofont-file-alt font-dark'
+                'file': {
+                    'icon': 'icofont icofont-file-alt font-dark'
                 }
             },
-            'plugins' : ['types']
+            'plugins': ['types']
         }), $('#treecheckbox').jstree({
-    		'core' : {
-    			'themes' : {
-    				'responsive': false
-    			}
-    		},
-            'types' : {
-                'default' : {
-                    'icon' : 'icofont icofont-folder font-theme'
-                },
-                'file' : {
-                    'icon' : 'icofont icofont-file-alt font-dark'
-                }
-            },
-            'plugins' : ['types', 'checkbox']
-        }), $('#dragTree').jstree({
-    		'core' : {
-    			'check_callback' : true,
-    			'themes' : {
-    				'responsive': false
-    			}
-    		},
-            'types' : {
-                'default' : {
-                    'icon' : 'icofont icofont-folder  font-theme'
-                },
-                'file' : {
-                    'icon' : 'icofont icofont-file-alt font-dark'
-                }
-            },
-            'plugins' : ['types', 'dnd']
-        }), $('#contextmenu').jstree({
-            'core' : {
-                'check_callback' : true,
-                'themes' : {
+            'core': {
+                'themes': {
                     'responsive': false
                 }
             },
-            'types' : {
-                'default' : {
-                    'icon' : 'icofont icofont-folder  font-theme'
+            'types': {
+                'default': {
+                    'icon': 'icofont icofont-folder font-theme'
                 },
-                'file' : {
-                    'icon' : 'icofont icofont-file-alt font-dark'
+                'file': {
+                    'icon': 'icofont icofont-file-alt font-dark'
                 }
             },
-                    "plugins" : [ "contextmenu", "state", "types" ]
+            'plugins': ['types', 'checkbox']
+        }), $('#dragTree').jstree({
+            'core': {
+                'check_callback': true,
+                'themes': {
+                    'responsive': false
+                }
+            },
+            'types': {
+                'default': {
+                    'icon': 'icofont icofont-folder  font-theme'
+                },
+                'file': {
+                    'icon': 'icofont icofont-file-alt font-dark'
+                }
+            },
+            'plugins': ['types', 'dnd']
+        }), $('#contextmenu').jstree({
+            'core': {
+                'check_callback': true,
+                'themes': {
+                    'responsive': false
+                }
+            },
+            'types': {
+                'default': {
+                    'icon': 'icofont icofont-folder  font-theme'
+                },
+                'file': {
+                    'icon': 'icofont icofont-file-alt font-dark'
+                }
+            },
+            "plugins": ["contextmenu", "state", "types"]
         });
     }
 };
-(function($) {
+(function ($) {
     "use strict";
     tree_custom.init()
 })(jQuery);

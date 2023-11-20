@@ -5,6 +5,6 @@ namespace ShoesShop.BLL.ViewModels.Brands;
 
 public class UpdateBrandModel : AuditModel
 {
-    [Required] public string Name { get; set; }
-    [Required] public string Code { get; set; }
+	[Required] public string Name { get; set; }
+	[Required] public string Code { get; set; }
 }

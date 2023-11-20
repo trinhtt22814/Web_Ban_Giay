@@ -1,46 +1,46 @@
- $('#owl-carousel-land').owlCarousel({
-                stagePadding: 50,
-                loop:true,
-                margin:10,
-                autoplay:true,
-                autoplayHoverPause:true,
-                nav:false,
-                responsive:{
-                    992 : {
-                        items:3,
-                        mergeFit:true
-                    },
-                    768 : {
-                        items:2,
-                        mergeFit:true
-                    },
-                    576 : {
-                        items:1,
-                        mergeFit:true
-                    },
-                    0 : {
-                        items:1,
-                        mergeFit:true
-                    }
-                }
-            }),
+$('#owl-carousel-land').owlCarousel({
+    stagePadding: 50,
+    loop: true,
+    margin: 10,
+    autoplay: true,
+    autoplayHoverPause: true,
+    nav: false,
+    responsive: {
+        992: {
+            items: 3,
+            mergeFit: true
+        },
+        768: {
+            items: 2,
+            mergeFit: true
+        },
+        576: {
+            items: 1,
+            mergeFit: true
+        },
+        0: {
+            items: 1,
+            mergeFit: true
+        }
+    }
+}),
 
-$("#mainNav ul li a[href^='#']").on('click', function(e) {
-   // prevent default anchor click behavior
-   e.preventDefault();
+    $("#mainNav ul li a[href^='#']").on('click', function (e) {
+        // prevent default anchor click behavior
+        e.preventDefault();
 
-   // store hash
-   var hash = this.hash;
+        // store hash
+        var hash = this.hash;
 
-   // animate
-   $('html, body').animate({
-       scrollTop: $(hash).offset().top
-     }, 1000, function(){
-       // when done, add hash to url
-       // (default click behaviour)
-       window.location.hash = hash;
-     });
-});
+        // animate
+        $('html, body').animate({
+            scrollTop: $(hash).offset().top
+        }, 1000, function () {
+            // when done, add hash to url
+            // (default click behaviour)
+            window.location.hash = hash;
+        });
+    });
 
 // on scroll
 let mainNavLinks = document.querySelectorAll("nav ul li a");
@@ -59,24 +59,24 @@ let cur = [];
 // Only not doing it here to keep this Pen dependency-free.
 
 window.addEventListener("scroll", event => {
-  let fromTop = window.scrollY;
+    let fromTop = window.scrollY;
 
-  mainNavLinks.forEach(link => {
-    let section = document.querySelector(link.hash);
+    mainNavLinks.forEach(link => {
+        let section = document.querySelector(link.hash);
 
-    if (
-      section.offsetTop <= fromTop &&
-      section.offsetTop + section.offsetHeight > fromTop
-    ) {
-      link.classList.add("active");
-    } else {
-      link.classList.remove("active");
-    }
-  });
+        if (
+            section.offsetTop <= fromTop &&
+            section.offsetTop + section.offsetHeight > fromTop
+        ) {
+            link.classList.add("active");
+        } else {
+            link.classList.remove("active");
+        }
+    });
 });
 
 // bottom to top
-$(window).on('scroll', function() {
+$(window).on('scroll', function () {
     if ($(this).scrollTop() > 600) {
         $('.tap-top').fadeIn();
     } else {
@@ -84,7 +84,7 @@ $(window).on('scroll', function() {
     }
 });
 
-$('.tap-top').click( function() {
+$('.tap-top').click(function () {
     $("html, body").animate({
         scrollTop: 0
     }, 600);
@@ -92,19 +92,19 @@ $('.tap-top').click( function() {
 });
 
 // navbar
-$(document).ready(function(){
-  $(".custom_nav , .js-scroll ,navabr_btn-set").click(function(){
-    $(".hidenav").toggle();
-  });
+$(document).ready(function () {
+    $(".custom_nav , .js-scroll ,navabr_btn-set").click(function () {
+        $(".hidenav").toggle();
+    });
 });
 
 // navbar active class
 var header = document.getElementById("scroll-spy");
 var btns = header.getElementsByClassName("js-scroll");
 for (var i = 0; i < btns.length; i++) {
-  btns[i].addEventListener("click", function() {
-  var current = document.getElementsByClassName("active");
-  current[0].className = current[0].className.replace(" active", "");
-  this.className += " active";
-  });
+    btns[i].addEventListener("click", function () {
+        var current = document.getElementsByClassName("active");
+        current[0].className = current[0].className.replace(" active", "");
+        this.className += " active";
+    });
 }

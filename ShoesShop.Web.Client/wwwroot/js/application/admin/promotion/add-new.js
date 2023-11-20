@@ -5,11 +5,11 @@
         $('#DiscountPercent').on('keyup', function () {
             var p = parseInt($('#DiscountPercent').val())
 
-            if ($('#DiscountPercent').val()){
+            if ($('#DiscountPercent').val()) {
                 if (isNaN(p) || p <= 0) {
                     $('#sDiscountPercent').show()
                     $('#DiscountPercent').val('')
-                }else{
+                } else {
                     $('#sDiscountPercent').hide()
                 }
             }
@@ -22,7 +22,7 @@
             var data = getFormDataJson('frmSubmit');
             var check = validationForm('frmSubmit');
 
-            if (check){
+            if (check) {
                 coreAjax(
                     check
                     , '/Admin/Promotion/SubmitAddNew'

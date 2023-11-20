@@ -6,7 +6,7 @@
             var data = getFormDataJson('frmLogin');
             var check = validationForm('frmLogin');
 
-            if (check){
+            if (check) {
                 coreAjax(
                     check
                     , '/Authenticate/SignIn'
@@ -23,7 +23,7 @@
             var data = getFormDataJson('frmSubmitSignUp');
             var check = validationForm('frmSubmitSignUp');
 
-            if (check){
+            if (check) {
                 coreAjax(
                     check
                     , '/Authenticate/SignUp'

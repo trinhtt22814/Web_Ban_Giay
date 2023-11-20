@@ -19,9 +19,9 @@
                         let strSplit = href.split('page=');
                         window.location.href = strSplit[0] + 'page=' + page;
                     } else {
-                        if (href.indexOf('?') > 0){
+                        if (href.indexOf('?') > 0) {
                             window.location.href = href + '&page=' + page;
-                        }else{
+                        } else {
                             window.location.href = href + '?page=' + page;
                         }
                     }

@@ -8,7 +8,7 @@
             if (isNaN(p) || p <= 0) {
                 $('#sDiscountPercent').show()
                 $('#DiscountPercent').val('')
-            }else{
+            } else {
                 $('#sDiscountPercent').hide()
             }
         })

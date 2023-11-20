@@ -1,13 +1,13 @@
 "use strict";
-(function($) {
+(function ($) {
     "use strict";
-//Minimum and Maxium Date
+    //Minimum and Maxium Date
     $('#minMaxExample').datepicker({
         language: 'en',
         minDate: new Date() // Now can select only dates, which goes after today
     })
 
-//Disable Days of week
+    //Disable Days of week
     var disabledDays = [0, 6];
 
     $('#disabled-days').datepicker({

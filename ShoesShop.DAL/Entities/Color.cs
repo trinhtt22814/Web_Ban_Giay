@@ -3,9 +3,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ShoesShop.DAL.Entities
 {
-    public class Color : Audit
-    {
-        [Required][MaxLength(500)] public string Name { get; set; }
-        [Required][MaxLength(500)] public string Code { get; set; }
-    }
+	public class Color : Audit
+	{
+		[Required][MaxLength(500)] public string Name { get; set; }
+		[Required][MaxLength(500)] public string Code { get; set; }
+	}
 }

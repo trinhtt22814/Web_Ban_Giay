@@ -4,7 +4,7 @@ namespace ShoesShop.BLL.ViewModels.Order;
 
 public class UpdateStatusOrderModel : AuditModel
 {
-    public Guid OrderId { get; set; }
-    public Guid StatusOrderId { get; set; }
-    public Guid StatusPaymentId { get; set; }
+	public Guid OrderId { get; set; }
+	public Guid StatusOrderId { get; set; }
+	public Guid StatusPaymentId { get; set; }
 }

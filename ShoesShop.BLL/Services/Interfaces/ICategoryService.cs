@@ -5,13 +5,13 @@ namespace ShoesShop.BLL.Services.Interfaces;
 
 public interface ICategoryService
 {
-    Task<List<CategoryDetailModel>> GetListCategory();
+	Task<List<CategoryDetailModel>> GetListCategory();
 
-    Task<CategoryDetailModel> GetDetail(string id);
+	Task<CategoryDetailModel> GetDetail(string id);
 
-    Task<bool> Delete(DeleteModel model);
+	Task<bool> Delete(DeleteModel model);
 
-    Task<bool> AddNew(AddNewCategoryModel model);
+	Task<bool> AddNew(AddNewCategoryModel model);
 
-    Task<bool> Update(UpdateCategoryModel model);
+	Task<bool> Update(UpdateCategoryModel model);
 }

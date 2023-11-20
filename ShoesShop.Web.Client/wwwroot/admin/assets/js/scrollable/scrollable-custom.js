@@ -1,6 +1,6 @@
 'use strict';
 var scrollable_custom = {
-    init: function() {
+    init: function () {
         $(".vertical-scroll").perfectScrollbar({
             suppressScrollX: !0,
             wheelPropagation: !0
@@ -19,7 +19,7 @@ var scrollable_custom = {
         })
     }
 };
-(function($) {
+(function ($) {
     "use strict";
     scrollable_custom.init();
 })(jQuery);

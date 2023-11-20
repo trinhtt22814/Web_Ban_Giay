@@ -4,5 +4,5 @@ namespace ShoesShop.BLL.Services.Interfaces;
 
 public interface ICartService
 {
-    Task<List<CartProductModel>> GetListCart(List<CartProductModel> list);
+	Task<List<CartProductModel>> GetListCart(List<CartProductModel> list);
 }

@@ -4,18 +4,18 @@ namespace ShoesShop.DAL.Enums;
 
 public enum PaymentStatus
 {
-    // Code
-    [Description("Paid")] PaidCode,
+	// Code
+	[Description("Paid")] PaidCode,
 
-    [Description("WaitingPay")] WaitingPayCode,
+	[Description("WaitingPay")] WaitingPayCode,
 
-    // Display
-    [Description("Đã thanh toán")] PaidDisplayVN,
+	// Display
+	[Description("Đã thanh toán")] PaidDisplayVN,
 
-    [Description("Chưa thanh toán")] WaitingPayDisplayVN,
+	[Description("Chưa thanh toán")] WaitingPayDisplayVN,
 
-    // Display
-    [Description("Paid")] PaidDisplayEN,
+	// Display
+	[Description("Paid")] PaidDisplayEN,
 
-    [Description("Waiting Pay")] WaitingPayDisplayEN,
+	[Description("Waiting Pay")] WaitingPayDisplayEN,
 }

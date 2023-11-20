@@ -5,7 +5,7 @@
     var firstLoadOrRefresh = function () {
         var dataCartFirst = JSON.parse(localStorage.getItem('cart'))
 
-        for(var item of dataCartFirst){
+        for (var item of dataCartFirst) {
             item.PromotionCode = ''
         }
 
@@ -28,7 +28,7 @@
             $('#PInvalid').hide();
             $('#PValid').text(current);
 
-            if ($('#PromotionCode').val()===''){
+            if ($('#PromotionCode').val() === '') {
                 $('#PRequired').show();
                 return;
             }
@@ -39,7 +39,7 @@
                 , null
                 , 'GET'
                 , function (res) {
-                    if (res.code){
+                    if (res.code) {
                         var text = $('#PValid').text();
                         var newText = text + ' ' + res.discountPercent + '%';
                         $('#PValid').text(newText);
@@ -47,7 +47,7 @@
 
                         var dataCart = JSON.parse(localStorage.getItem('cart'))
 
-                        for(var item of dataCart){
+                        for (var item of dataCart) {
                             item.PromotionCode = res.code
                         }
 
@@ -55,7 +55,7 @@
                         localStorage.setItem('cart', JSON.stringify(dataCart))
 
                         getYourCart();
-                    }else{
+                    } else {
                         $('#PInvalid').show();
                     }
                 }

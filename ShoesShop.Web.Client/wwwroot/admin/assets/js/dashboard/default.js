@@ -1,4 +1,4 @@
-$(window).on('load',function(){
+$(window).on('load', function () {
     $('#loadModal').modal('show');
 });
 
@@ -11,12 +11,12 @@ new Chartist.Bar('.dashboard-rounded-chart', {
     chartPadding: {
         left: 5,
         bottom: 0,
-        right:0,
-        top:0,
+        right: 0,
+        top: 0,
     },
     low: 0,
     axisY: {
-        labelInterpolationFnc: function(value) {
+        labelInterpolationFnc: function (value) {
             return (value / 1000);
         }
     },
@@ -25,8 +25,8 @@ new Chartist.Bar('.dashboard-rounded-chart', {
         showGrid: false,
         offset: 0
     }
-}).on('draw', function(data) {
-    if(data.type === 'bar') {
+}).on('draw', function (data) {
+    if (data.type === 'bar') {
         data.element.attr({
             style: 'stroke-width: 8px ; stroke-linecap: round'
         });
@@ -52,8 +52,8 @@ new Chartist.Bar('.ct-small-left', {
         showLabel: false,
         offset: 0
     }
-}).on('draw', function(data) {
-    if(data.type === 'bar') {
+}).on('draw', function (data) {
+    if (data.type === 'bar') {
         data.element.attr({
             style: 'stroke-width: 3px'
         });
@@ -61,7 +61,7 @@ new Chartist.Bar('.ct-small-left', {
 });
 
 // our growth chart
-var chart    = document.getElementById('our-growth').getContext('2d'),
+var chart = document.getElementById('our-growth').getContext('2d'),
     gradient = chart.createLinearGradient(0, 0, 150, 0);
 
 gradient.addColorStop(0, 'rgb(255, 246, 243)');
@@ -108,12 +108,12 @@ new Chartist.Bar('.call-chart', {
         [100, 300, 500, 700, 600, 400, 300, 100, 300, 500, 700, 600, 400, 100]
     ]
 }, {
-    scaleShowLabels : false,
+    scaleShowLabels: false,
     stackBars: true,
     chartPadding: {
         left: 0,
         bottom: 0,
-        right:0,
+        right: 0,
         top: 5,
     },
     axisY: {
@@ -127,18 +127,18 @@ new Chartist.Bar('.call-chart', {
         showGrid: false,
         offset: 0
     }
-}).on('draw', function(data) {
-    if(data.type === 'bar') {
+}).on('draw', function (data) {
+    if (data.type === 'bar') {
         data.element.attr({
             style: 'stroke-width: 10px ; stroke-linecap: round'
         });
     }
 });
 // vector map
-! function(maps) {
+! function (maps) {
     "use strict";
-    var b = function() {};
-    b.prototype.init = function() {
+    var b = function () { };
+    b.prototype.init = function () {
         maps("#world").vectorMap({
             map: "world_mill_en",
             scaleColors: ["#2196F3", "#1B8BF9"],
@@ -154,36 +154,36 @@ new Chartist.Bar('.call-chart', {
         })
     }, maps.VectorMap = new b, maps.VectorMap.Constructor = b
 }(window.jQuery),
-    function(maps) {
+    function (maps) {
         "use strict";
         maps.VectorMap.init()
     }(window.jQuery);
 
 // btn js
-$('.btn-js').click(function(){
+$('.btn-js').click(function () {
     //make all inactive-doesn't work
-    $( '.btn-js' ).each(function( ) {
-        if($(this).hasClass('active')){
+    $('.btn-js').each(function () {
+        if ($(this).hasClass('active')) {
             $(this).removeClass('active')
         }
     });
 
-    if($(this).hasClass('active')){
+    if ($(this).hasClass('active')) {
         $(this).removeClass('active')
     } else {
         $(this).addClass('active')
     }
 });
 
-$('.btn-js1').click(function(){
+$('.btn-js1').click(function () {
     //make all inactive-doesn't work
-    $( '.btn-js1' ).each(function( ) {
-        if($(this).hasClass('active')){
+    $('.btn-js1').each(function () {
+        if ($(this).hasClass('active')) {
             $(this).removeClass('active')
         }
     });
 
-    if($(this).hasClass('active')){
+    if ($(this).hasClass('active')) {
         $(this).removeClass('active')
     } else {
         $(this).addClass('active')

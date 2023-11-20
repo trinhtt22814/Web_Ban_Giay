@@ -3,9 +3,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ShoesShop.BLL.ViewModels.Color
 {
-    public class UpdateColorModel : AuditModel
-    {
-        [Required] public string Name { get; set; }
-        [Required] public string Code { get; set; }
-    }
+	public class UpdateColorModel : AuditModel
+	{
+		[Required] public string Name { get; set; }
+		[Required] public string Code { get; set; }
+	}
 }

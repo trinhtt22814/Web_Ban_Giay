@@ -18,7 +18,7 @@
             e.preventDefault();
             var id = $(this).attr('data-id')
             sweetAlertDeleteConfirmation('/Admin/User/Delete', id, $('#TitleDelete').val(), $('#TextDelete').val(),
-                function() { getListUser() })
+                function () { getListUser() })
         });
     }
 

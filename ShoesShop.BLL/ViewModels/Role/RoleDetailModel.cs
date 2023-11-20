@@ -4,5 +4,5 @@ namespace ShoesShop.BLL.ViewModels.Role;
 
 public class RoleDetailModel : AuditModel
 {
-    public string Name { get; set; }
+	public string Name { get; set; }
 }

@@ -5,7 +5,7 @@ namespace ShoesShop.BLL.Services.Interfaces;
 
 public interface ICommonService
 {
-    Task<MenuModel> GetMenu(bool isAdmin);
+	Task<MenuModel> GetMenu(bool isAdmin);
 
-    Task<List<StatusDetailModel>> GetDropdownStatus(string type);
+	Task<List<StatusDetailModel>> GetDropdownStatus(string type);
 }

@@ -5,7 +5,7 @@ var DropzoneExample = function () {
             paramName: "file", // The name that will be used to transfer the file
             maxFiles: 1,
             maxFilesize: 5, // MB
-            accept: function(file, done) {
+            accept: function (file, done) {
                 if (file.name == "unive.jpg") {
                     done("Naha, you don't.");
                 } else {
@@ -19,7 +19,7 @@ var DropzoneExample = function () {
             paramName: "file", // The name that will be used to transfer the file
             maxFiles: 10,
             maxFilesize: 10, // MB
-            accept: function(file, done) {
+            accept: function (file, done) {
                 if (file.name == "unive.jpg") {
                     done("Naha, you don't.");
                 } else {
@@ -34,7 +34,7 @@ var DropzoneExample = function () {
             maxFiles: 10,
             maxFilesize: 10, // MB
             acceptedFiles: "image/*,application/pdf,.psd",
-            accept: function(file, done) {
+            accept: function (file, done) {
                 if (file.name == "unive.jpg") {
                     done("Naha, you don't.");
                 } else {
@@ -45,7 +45,7 @@ var DropzoneExample = function () {
     }
 
     return {
-        init: function() {
+        init: function () {
             DropzoneDemos();
         }
     };

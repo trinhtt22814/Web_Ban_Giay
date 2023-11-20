@@ -14,7 +14,7 @@
             e.preventDefault();
             var id = $(this).attr('data-id')
             sweetAlertDeleteConfirmation('/Admin/Product/Delete', id, $('#TitleDelete').val(), $('#TextDelete').val(),
-                function() { getListProduct() })
+                function () { getListProduct() })
         });
     }
 

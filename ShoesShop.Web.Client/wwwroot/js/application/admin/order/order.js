@@ -4,7 +4,7 @@
     //Load functions
     $(document).ready(function () {
         listenMessage(function (type, message) {
-            if (type==='order'){
+            if (type === 'order') {
                 console.log(message);
                 getListOrder();
             }

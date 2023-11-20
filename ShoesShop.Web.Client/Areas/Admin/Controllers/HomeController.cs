@@ -7,9 +7,9 @@ namespace ShoesShop.Web.Client.Areas.Admin.Controllers;
 [Authorize(Roles = SecurityRoles.Manager)]
 public class HomeController : BaseAdminController
 {
-    // GET
-    public IActionResult Index()
-    {
-        return View();
-    }
+	// GET
+	public IActionResult Index()
+	{
+		return View();
+	}
 }

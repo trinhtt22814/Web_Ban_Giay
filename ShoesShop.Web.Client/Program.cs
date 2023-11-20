@@ -1,4 +1,3 @@
-
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.EntityFrameworkCore;
 using ShoesShop.BLL.Persistence;
@@ -14,7 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddDbContext<WebDbContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+	options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
 builder.Services.WebDependency(builder.Configuration);
@@ -39,24 +38,24 @@ var app = builder.Build();
 
 app.UseStatusCodePages(context =>
 {
-    var response = context.HttpContext.Response;
+	var response = context.HttpContext.Response;
 
-    switch (response.StatusCode)
-    {
-        case (int)HttpStatusCode.NotFound:
-            response.Redirect("/Common/NotFoundPage");
-            break;
+	switch (response.StatusCode)
+	{
+		case (int)HttpStatusCode.NotFound:
+			response.Redirect("/Common/NotFoundPage");
+			break;
 
-        case (int)HttpStatusCode.Unauthorized:
-            response.Redirect("/#login");
-            break;
+		case (int)HttpStatusCode.Unauthorized:
+			response.Redirect("/#login");
+			break;
 
-        case (int)HttpStatusCode.Forbidden:
-            response.Redirect("/Common/AccessDenied");
-            break;
-    }
+		case (int)HttpStatusCode.Forbidden:
+			response.Redirect("/Common/AccessDenied");
+			break;
+	}
 
-    return Task.CompletedTask;
+	return Task.CompletedTask;
 });
 
 // Configure the HTTP request pipeline.
@@ -68,11 +67,11 @@ app.UseSession();
 
 app.Use(async (context, next) =>
 {
-    var jwtToken = context.Session.GetString(AppConst.SessionJwtKey);
-    // var jwtToken = context.Request.GetCookie(SystemConst.AppSecure);
-    if (!string.IsNullOrEmpty(jwtToken))
-        context.Request.Headers.Add("Authorization", "Bearer " + jwtToken);
-    await next();
+	var jwtToken = context.Session.GetString(AppConst.SessionJwtKey);
+	// var jwtToken = context.Request.GetCookie(SystemConst.AppSecure);
+	if (!string.IsNullOrEmpty(jwtToken))
+		context.Request.Headers.Add("Authorization", "Bearer " + jwtToken);
+	await next();
 });
 
 app.UseHttpsRedirection();
@@ -82,7 +81,7 @@ app.UseRouting();
 
 app.UseForwardedHeaders(new ForwardedHeadersOptions
 {
-    ForwardedHeaders = ForwardedHeaders.XForwardedProto
+	ForwardedHeaders = ForwardedHeaders.XForwardedProto
 });
 
 app.UseAuthentication();
@@ -90,15 +89,15 @@ app.UseAuthorization();
 
 app.UseEndpoints(endpoints =>
 {
-    endpoints.MapControllerRoute(
-        name: "default",
-        pattern: "{controller=Home}/{action=Index}/{id?}");
+	endpoints.MapControllerRoute(
+		name: "default",
+		pattern: "{controller=Home}/{action=Index}/{id?}");
 
-    endpoints.MapControllerRoute(
-        name: "areas",
-        pattern: "{area:exists}/{controller=Home}/{action=Index}");
+	endpoints.MapControllerRoute(
+		name: "areas",
+		pattern: "{area:exists}/{controller=Home}/{action=Index}");
 
-    endpoints.MapHub<WebHub>("/realtime");
+	endpoints.MapHub<WebHub>("/realtime");
 });
 
 app.Run();

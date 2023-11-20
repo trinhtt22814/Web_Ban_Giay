@@ -11,7 +11,7 @@ with new Image()). If the image is not complete, it's skipped when plotting.
 There are two helpers included for retrieving images. The easiest work the way
 that you put in URLs instead of images in the data, like this:
 
-	[ "myimage.png", 0, 0, 10, 10 ]
+    [ "myimage.png", 0, 0, 10, 10 ]
 
 Then call $.plot.image.loadData( data, options, callback ) where data and
 options are the same as you pass in to $.plot. This loads the images, replaces
@@ -25,20 +25,20 @@ Image object when all images are loaded or have failed loading.
 
 The plugin supports these options:
 
-	series: {
-		images: {
-			show: boolean
-			anchor: "corner" or "center"
-			alpha: [ 0, 1 ]
-		}
-	}
+    series: {
+        images: {
+            show: boolean
+            anchor: "corner" or "center"
+            alpha: [ 0, 1 ]
+        }
+    }
 
 They can be specified for a specific series:
 
-	$.plot( $("#placeholder"), [{
-		data: [ ... ],
-		images: { ... }
-	])
+    $.plot( $("#placeholder"), [{
+        data: [ ... ],
+        images: { ... }
+    ])
 
 Note that because the data format is different from usual data points, you
 can't use images with anything else in a specific data series.
@@ -151,10 +151,10 @@ Google Maps).
             // if the anchor is at the center of the pixel, expand the
             // image by 1/2 pixel in each direction
             if (series.images.anchor == "center") {
-                tmp = 0.5 * (x2-x1) / (img.width - 1);
+                tmp = 0.5 * (x2 - x1) / (img.width - 1);
                 x1 -= tmp;
                 x2 += tmp;
-                tmp = 0.5 * (y2-y1) / (img.height - 1);
+                tmp = 0.5 * (y2 - y1) / (img.height - 1);
                 y1 -= tmp;
                 y2 += tmp;
             }
@@ -206,9 +206,9 @@ Google Maps).
             tmp = ctx.globalAlpha;
             ctx.globalAlpha *= series.images.alpha;
             ctx.drawImage(img,
-                          sx1, sy1, sx2 - sx1, sy2 - sy1,
-                          x1 + plotOffset.left, y1 + plotOffset.top,
-                          x2 - x1, y2 - y1);
+                sx1, sy1, sx2 - sx1, sy2 - sy1,
+                x1 + plotOffset.left, y1 + plotOffset.top,
+                x2 - x1, y2 - y1);
             ctx.globalAlpha = tmp;
         }
     }

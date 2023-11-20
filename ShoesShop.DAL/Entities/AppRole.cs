@@ -2,8 +2,8 @@
 
 namespace ShoesShop.DAL.Entities
 {
-    public class AppRole : IdentityRole<Guid>
-    {
-        public string Description { get; set; }
-    }
+	public class AppRole : IdentityRole<Guid>
+	{
+		public string Description { get; set; }
+	}
 }

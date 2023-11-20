@@ -4,7 +4,7 @@ $(document)
     .ajaxSend(function (event, xhr, options) {
         counterRequest++;
         console.log('send');
-        if (getParamFromUrl("noBlockUI", options.url) === "true") {return;}
+        if (getParamFromUrl("noBlockUI", options.url) === "true") { return; }
 
         //set loading and block ui
         if (counterRequest > 0) {
