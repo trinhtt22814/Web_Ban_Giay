@@ -1,5 +1,4 @@
-﻿
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using ShoesShop.BLL.Common.ViewModels;
 using ShoesShop.BLL.Services.Interfaces;
 using ShoesShop.DAL.Constants;

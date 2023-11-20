@@ -1,5 +1,4 @@
-﻿ 
-using Mapster;
+﻿using Mapster;
 using Microsoft.EntityFrameworkCore;
 using ShoesShop.BLL.Persistence;
 using ShoesShop.BLL.Services.Interfaces;

@@ -1,5 +1,4 @@
-﻿
-using ShoesShop.BLL.Common.ViewModels;
+﻿using ShoesShop.BLL.Common.ViewModels;
 using ShoesShop.BLL.ViewModels.Categories;
 
 namespace ShoesShop.BLL.Services.Interfaces;

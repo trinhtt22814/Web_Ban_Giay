@@ -1,5 +1,4 @@
-﻿ 
-using Mapster;
+﻿ using Mapster;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;

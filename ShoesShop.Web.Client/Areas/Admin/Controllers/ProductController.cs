@@ -110,7 +110,7 @@ public class ProductController : BaseAdminController
 
         var success = await _productService.AddNew(request);
 
-        return success ? SuccessResponse("Saved successfully") : BadRequestResponse("Saved fail");
+        return success ? SuccessResponse("Saved successfully") : BadRequestResponse("Saved fail");       
     }
 
     [HttpPost]

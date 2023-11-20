@@ -1,5 +1,4 @@
-﻿ 
-using ShoesShop.BLL.ViewModels.Brands;
+﻿using ShoesShop.BLL.ViewModels.Brands;
 using ShoesShop.BLL.ViewModels.Categories;
 using ShoesShop.BLL.ViewModels.Color;
 using ShoesShop.BLL.ViewModels.Material;

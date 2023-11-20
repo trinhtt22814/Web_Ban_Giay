@@ -4,7 +4,6 @@ using ShoesShop.BLL.Common.ViewModels;
 using ShoesShop.BLL.Persistence;
 using ShoesShop.BLL.Services.Interfaces;
 using ShoesShop.BLL.ViewModels.Color;
-
 using ShoesShop.DAL.Entities;
 using ShoesShop.DAL.Helpers;
 

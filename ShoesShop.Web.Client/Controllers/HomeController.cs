@@ -1,5 +1,4 @@
-﻿ 
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using ShoesShop.BLL.Services.Interfaces;
 using ShoesShop.DAL.Constants;
 

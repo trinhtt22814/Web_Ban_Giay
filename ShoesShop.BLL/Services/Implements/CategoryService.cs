@@ -1,6 +1,4 @@
-﻿ 
- 
-using Mapster;
+﻿using Mapster;
 using Microsoft.EntityFrameworkCore;
 using ShoesShop.BLL.Common.ViewModels;
 using ShoesShop.BLL.Persistence;

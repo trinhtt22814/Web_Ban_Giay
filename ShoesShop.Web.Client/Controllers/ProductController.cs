@@ -1,6 +1,5 @@
 ﻿using ShoesShop.BLL.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using ShoesShop.BLL.Services.Interfaces;
 using ShoesShop.BLL.ViewModels.Product;
 using ShoesShop.BLL.ViewModels.Search;
 using ShoesShop.DAL.Helpers;
